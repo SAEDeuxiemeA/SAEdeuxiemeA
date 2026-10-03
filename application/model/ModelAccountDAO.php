@@ -1,0 +1,30 @@
+<?php
+namespace model;
+
+class ModelAccountDAO {
+    public function verifierConnexion(string $login, string $password): ?ModelAccount{
+        $db = Database::getConnexion();
+
+        $stmt = $db->prepare('SELECT username, userpassword FROM user WHERE username = :login');
+        $stmt->execute(['username' => $login]);
+        $row = $stmt->fetch();
+
+        if ($row && password_verify($password, $row['userpassword'])) {
+            return new ModelAccount($row['username'], $row['userpassword']);
+        }
+        return null;
+    }
+    public function creerCompte(string $username, string $email, string $password): bool {
+        $db = Database::getConnexion();
+        //On hache le mot de passe pour la sécurité
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $db->prepare('INSERT INTO user (username, email, userpassword) VALUES (:username, :email, :password)');
+        $resultat = $stmt->execute([
+            'username' => $username,
+            'email' => $email,
+            'password' => $passwordHash
+        ]);
+        return $resultat;
+    }
+}
+?>
