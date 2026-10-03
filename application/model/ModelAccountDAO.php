@@ -14,5 +14,17 @@ class ModelAccountDAO {
         }
         return null;
     }
+    public function creerCompte(string $username, string $email, string $password): bool {
+        $db = Database::getConnexion();
+        //On hache le mot de passe pour la sécurité
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $db->prepare('INSERT INTO user (username, email, userpassword) VALUES (:username, :email, :password)');
+        $resultat = $stmt->execute([
+            'username' => $username,
+            'email' => $email,
+            'password' => $passwordHash
+        ]);
+        return $resultat;
+    }
 }
 ?>
