@@ -34,7 +34,15 @@ class ModelAccountDAO {
             'picture' => $picture,
             'username' => $username
         ]);
-
+        return $resultat;
+    }
+    public function supprimerCompte(string $username): bool {
+        $db = Database::getConnexion();
+        //On supprime toute la ligne de l'utilisateur
+        $stmt = $db->prepare('DELETE FROM user WHERE username = :username');
+        $resultat = $stmt->execute([
+            'username' => $username
+        ]);
         return $resultat;
     }
 }
