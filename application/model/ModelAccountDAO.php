@@ -45,5 +45,26 @@ class ModelAccountDAO {
         ]);
         return $resultat;
     }
+
+    //Vérifier si l'email existe (Mot de passe oublié)
+    public function trouverCompteParEmail(string $email): bool {
+        $db = Database::getConnexion();
+        $stmt = $db->prepare('SELECT email FROM user WHERE email = :email');
+        $stmt->execute(['email' => $email]);
+        // Si fetch() trouve quelque chose ça renvoie true sinon false
+        return $stmt->fetch() !== false;
+    }
+
+    //Mettre à jour le mot de passe
+    public function modifierMotDePasse(string $email, string $nouveauPassword): bool {
+        $db = Database::getConnexion();
+        $passwordHash = password_hash($nouveauPassword, PASSWORD_DEFAULT);
+        $stmt = $db->prepare('UPDATE user SET userpassword = :password WHERE email = :email');
+        $resultat = $stmt->execute([
+            'password' => $passwordHash,
+            'email' => $email
+        ]);
+        return $resultat;
+    }
 }
 ?>
