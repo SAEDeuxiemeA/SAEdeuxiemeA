@@ -7,7 +7,8 @@ class router
         'createacc' => 'ControllerCreateAcc',
         'legal' => 'ControllerLegal',
         'login' => 'ControllerLogin',
-        'password' => 'ControllerPassword'
+        'password' => 'ControllerPassword',
+        'confidentiality' => 'ControllerConfidentiality'
     ];
 
     const ROUTES_DEFAULT = 'home';

@@ -17,7 +17,7 @@
 
         <div>
             <button type="submit">Se connecter</button>
-            <a href="inscription.php" class="btn">Je n'ai pas de compte</a>        </div>
+            <a href="index.php?page=createacc&amp;action=index" class="btn">Je n'ai pas de compte</a>        </div>
     </form>
 </main>
 <?php

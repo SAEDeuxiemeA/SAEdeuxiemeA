@@ -3,9 +3,9 @@
 namespace controller;
 require_once __DIR__ . "/Controller.php";
 
-class ControllerPassword extends Controller
+class ControllerConfidentiality extends Controller
 {
     public function index(): void{
-        $this->render('ViewMDP');
+        $this->render('ViewConfidentiality');
     }
 }

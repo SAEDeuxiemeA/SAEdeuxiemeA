@@ -3,9 +3,9 @@
 namespace controller;
 require_once __DIR__ . "/Controller.php";
 
-class ControllerCreateAcc
+class ControllerCreateAcc extends Controller
 {
     public function index(){
-        $this->render('VueInscription');
+        $this->render('ViewInscription');
     }
 }

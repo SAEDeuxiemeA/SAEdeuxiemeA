@@ -7,7 +7,7 @@ class ControllerHome extends Controller
 
 {
     public function index(): void{
-        $this->render('VueAcceuil');
+        $this->render('ViewHome');
     }
 
 }
