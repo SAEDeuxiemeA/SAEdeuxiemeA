@@ -6,3 +6,9 @@ Voici le github de notre SAE pour l'année de BUT 2.
 | Nom de l'IA utilisée | Pourquoi l'avoir utilisée | Qui l'a utilisée |
 | :--- | :--- | :--- |
 | Gemini | Pour corriger mes vues | Anna |
+
+## Utilisation d'autres sources hors IA
+
+| Nom d'autre source | Pourquoi l'avoir utilisée | Qui l'a utilisée |
+| :--- | :--- | :--- |
+| ??? | ??? | ??? |
