@@ -26,5 +26,16 @@ class ModelAccountDAO {
         ]);
         return $resultat;
     }
+    public function modifierAvatar(string $username, string $picture): bool {
+        $db = Database::getConnexion();
+        //On met à jour la colonne picture uniquement pour l'utilisateur concerné
+        $stmt = $db->prepare('UPDATE user SET picture = :picture WHERE username = :username');
+        $resultat = $stmt->execute([
+            'picture' => $picture,
+            'username' => $username
+        ]);
+
+        return $resultat;
+    }
 }
 ?>
