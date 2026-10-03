@@ -7,6 +7,6 @@ class ControllerLogin extends Controller
 
 {
     public function index(): void {
-        $this->render('VueLogin');
+        $this->render('ViewLogin');
     }
 }

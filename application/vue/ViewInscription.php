@@ -35,7 +35,7 @@
 
         <div>
             <button>Je m'inscris</button>
-            <a href="connexion.php" class = "btn">J'ai déjà un compte</a>        
+            <a href=index.php?page=login&amp;action=index" class = "btn">J'ai déjà un compte</a>
         </div>
     </form>
 </main>
