@@ -6,12 +6,12 @@
     <h1 class="sr-only">Connexion</h1>
     <form method="POST" action="">
         <div class="form-group">
-            <label for="email">Email: </label>
+            <label for="email" class="form label">Email: </label>
             <input type="email" id="email" name="email">
         </div>
 
         <div class="form-group">
-            <label for="password">MotDePasse: </label>
+            <label for="password" class="form label">MotDePasse: </label>
             <input type="password" id="password" name="password">
         </div>
 

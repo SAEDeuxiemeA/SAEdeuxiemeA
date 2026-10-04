@@ -38,6 +38,14 @@ form {
     width: 100%;
 }
 
+form label {
+    display: block;
+    color: #000000; 
+    font-size: 1rem;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
 form input[type="email"],
 form input[type="password"] {
     width: 100%;
