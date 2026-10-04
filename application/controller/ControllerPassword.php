@@ -25,7 +25,7 @@ class ControllerPassword extends Controller
             $token = $dao->createResetToken($email);
             $config = require __DIR__ . "/../../config.php";
             $link = $config['baseUrl'] . "/index.php?page=password&action=reset&token=" . $token;
-            $this->sendMail($email, $link);
+            $this->sendMail($email, $link, $config['mailFrom']);
         }
 
         $this->render('ViewMDP', [
@@ -84,16 +84,26 @@ class ControllerPassword extends Controller
 
     }
 
-    private function sendMail(string $email, string $link): void
+    private function sendMail(string $email, string $link, string $from): bool
     {
         $subject = 'Réinitialisation de votre mot de passe';
-        $body = "Pour choisir un nouveau mot de passe, ouvrez ce lien (valable 1 heure) :\n\n$link\n\n"
+        $body = "Pour choisir un nouveau mot de passe, ouvrez ce lien (valable 1 heure) :\n\n"
+            . $link . "\n\n"
             . "Si vous n'avez rien demandé, ignorez ce message.";
 
-        // mail() needs a mail server. On a local machine, log the link instead.
-        if (!@mail($email, $subject, $body)) {
-            error_log("Reset link for $email: $link");
+        $headers = [
+            'From' => $from,
+            'Content-Type' => 'text/plain; charset=UTF-8',
+        ];
+
+        $sent = @mail($email, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $headers);
+
+        if (!$sent) {
+            // No mail program available (typical on a local machine): log the link to test the flow
+            error_log("mail() failed, reset link for $email: $link");
         }
+
+        return $sent;
     }
 }
 
