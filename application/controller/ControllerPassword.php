@@ -4,7 +4,7 @@ namespace controller;
 use model\ModelAccountDAO;
 
 require_once __DIR__ . "/Controller.php";
-require_once __DIR__ . "/../model/ModelAccountDAO.php.php";
+require_once __DIR__ . "/../model/ModelAccountDAO.php";
 
 class ControllerPassword extends Controller
 {
