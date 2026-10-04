@@ -4,7 +4,7 @@ namespace controller;
 use model\ModelAccount;
 
 require_once __DIR__ . "/Controller.php";
-require_once __DIR__ . "/../ModelAccountDAO.php";
+require_once __DIR__ . "/../model/ModelAccountDAO.php";
 
 class ControllerCreateAcc extends Controller
 {
@@ -42,7 +42,7 @@ class ControllerCreateAcc extends Controller
                 $validation = "Username ou email déjà existant";
             }
             if ($account->createAccount($login, $email, $password)){
-                header('Location: index.php?page=login$amp;action=index');
+                header('Location: index.php?page=login&action=index');
                 exit;
             }
 
