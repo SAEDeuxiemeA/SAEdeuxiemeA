@@ -5,13 +5,13 @@
 <main>
     <form method="POST" action="">
         <div class="form-group">
-            <label for="newPassword">Nouveau mot de passe :</label>
+            <label for="newPassword" class="form label">Nouveau mot de passe :</label>
             <input
                     type="password" id="newPassword" name="newPassword">
         </div>
 
         <div class="form-group">
-            <label for="confirmPassword">Confirmation du mot de passe :</label>
+            <label for="confirmPassword" class="form label">Confirmation du mot de passe :</label>
             <input type="password" id="confirmPassword" name="confirmPassword">
         </div>
 
