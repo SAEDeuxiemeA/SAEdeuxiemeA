@@ -5,12 +5,12 @@ class ModelAccountDAO {
     public function verifyConnection(string $login, string $password): ?ModelAccount{
         $db = Database::getConnection();
 
-        $stmt = $db->prepare('SELECT username, userpassword FROM users WHERE username = :login');
+        $stmt = $db->prepare('SELECT username, userpassword, email, picture FROM users WHERE username = :login');
         $stmt->execute(['username' => $login]);
         $row = $stmt->fetch();
 
         if ($row && password_verify($password, $row['userpassword'])) {
-            return new ModelAccount($row['username'], $row['userpassword']);
+            return new ModelAccount($row['username'], $row['userpassword'], $row['email'],$row['picture']);
         }
         return null;
     }
