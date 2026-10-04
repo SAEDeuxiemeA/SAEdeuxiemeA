@@ -3,7 +3,7 @@ namespace model;
 
 class ModelAccountDAO {
     public function verifyConnection(string $login, string $password): ?ModelAccount{
-        $db = Database::getConnexion();
+        $db = Database::getConnection();
 
         $stmt = $db->prepare('SELECT username, userpassword FROM user WHERE username = :login');
         $stmt->execute(['username' => $login]);
@@ -15,7 +15,7 @@ class ModelAccountDAO {
         return null;
     }
     public function createAccount(string $username, string $email, string $password): bool {
-        $db = Database::getConnexion();
+        $db = Database::getConnection();
         //On hache le mot de passe pour la sécurité
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $db->prepare('INSERT INTO user (username, email, userpassword) VALUES (:username, :email, :password)');
@@ -27,7 +27,7 @@ class ModelAccountDAO {
         return $result;
     }
     public function modifyAvatar(string $username, string $picture): bool {
-        $db = Database::getConnexion();
+        $db = Database::getConnection();
         //On met à jour la colonne picture uniquement pour l'utilisateur concerné
         $stmt = $db->prepare('UPDATE user SET picture = :picture WHERE username = :username');
         $result = $stmt->execute([
@@ -37,7 +37,7 @@ class ModelAccountDAO {
         return $result;
     }
     public function deleteAccount(string $username): bool {
-        $db = Database::getConnexion();
+        $db = Database::getConnection();
         //On supprime toute la ligne de l'utilisateur
         $stmt = $db->prepare('DELETE FROM user WHERE username = :username');
         $result = $stmt->execute([
@@ -48,7 +48,7 @@ class ModelAccountDAO {
 
     //Vérifier si l'email existe (Mot de passe oublié)
     public function findAccountByEmail(string $email): bool {
-        $db = Database::getConnexion();
+        $db = Database::getConnection();
         $stmt = $db->prepare('SELECT email FROM user WHERE email = :email');
         $stmt->execute(['email' => $email]);
         // Si fetch() trouve quelque chose ça renvoie true sinon false
@@ -57,7 +57,7 @@ class ModelAccountDAO {
 
     //Mettre à jour le mot de passe
     public function modifyPassword(string $email, string $newPassword): bool {
-        $db = Database::getConnexion();
+        $db = Database::getConnection();
         $passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
         $stmt = $db->prepare('UPDATE user SET userpassword = :password WHERE email = :email');
         $result = $stmt->execute([
