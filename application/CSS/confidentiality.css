@@ -1,0 +1,92 @@
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #d8d3d3;
+    border-radius: 8px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    color: #000000;
+}
+
+main h1 {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-style: italic;
+    padding: 12px 20px;
+    margin: 0 auto 25px auto;
+    border-radius: 4px;
+    width: fit-content;
+    max-width: 90%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+main h2 {
+    font-size: 1.1rem;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: #111111;
+    border-bottom: 1px solid #bcbcbc;
+    padding-bottom: 4px;
+}
+
+main p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+main ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+main li {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+main a {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+
+@media screen and (min-width: 768px) {
+    main {
+        padding: 35px 30px;
+        margin: 30px auto;
+    }
+
+    main h1 {
+        font-size: 1.5rem;
+        padding: 14px 30px;
+    }
+
+    main h2 {
+        font-size: 1.25rem;
+        margin-top: 25px;
+    }
+
+    main p, main li {
+        font-size: 1rem;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    main {
+        padding: 45px 50px;
+        margin: 40px auto;
+    }
+
+    main h1 {
+        font-size: 1.7rem;
+        padding: 15px 40px;
+        margin-bottom: 35px;
+    }
+}

@@ -1,17 +1,17 @@
 <?php 
     require_once 'header.php';
-    start_page('Inscription');
+    start_page('Inscription', 'inscription');
     $errors = $errors ?? [];
 ?>
 <main>
-    <h1>Inscription</h1>
+    <h1 class="sr-only">Inscription</h1>
 
     <?php if (!empty($errors['general'])): ?>
         <p role="alert"><?= $errors['general'] ?></p>
     <?php endif; ?>
 
     <form action="index.php?page=createacc&amp;action=register" method="post" enctype="multipart/form-data">
-        <section>
+        <section class="form-body">
             <label for="login">Pseudo</label>
             <input type="text" id="login" name="login" maxlength="25" value="<?= $login ?? '' ?>" required>
 
@@ -28,7 +28,7 @@
             <input type="password" id="password_confirm" name="password_confirm" minlength="8" required>
         </section>
 
-        <div>
+        <div class="form-actions">
             <button type="submit">Je m'inscris</button>
             <a href="index.php?page=login&amp;action=index" class = "btn">J'ai déjà un compte</a>
         </div>

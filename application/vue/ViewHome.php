@@ -1,6 +1,6 @@
 <?php
     require_once 'header.php';
-    start_page('Accueil');
+    start_page('Accueil', 'home');
 ?>
 <main>
     <section class="bloc-grille">
