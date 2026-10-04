@@ -86,5 +86,44 @@ class ModelAccountDAO
         // Si fetch() trouve quelque chose ça renvoie true sinon false
         return $stmt->fetch() !== false;
     }
+
+    //Creation de Token pour reset le mot de passe
+    public function ceateResetToken(string $email): string {
+        $db = Database::getConnection();
+        $db->prepare('DELETE FROM password_resets WHERE email = :email')
+            ->execute(['email' => $email]);
+
+        $token = bin2hex(random_bytes(32));
+        $stmt = $db->prepare(
+            "INSERT INTO password_resets (token_hash, email, expires_at)
+            VALUES (:hash, :email, NOW() + INTERVAL '1 hour')"
+        );
+        $stmt->execute([
+            'hash'  => hash('sha256', $token),
+            'email' => $email,
+        ]);
+
+        return $token; 
+    }
+
+    //Retrouver à  quel email le Token est associé
+    public function findEmailByToken(string $token): ?string {
+        $db = Database::getConnection();
+        $stmt = $db->prepare(
+            'SELECT email FROM password_resets WHERE token_hash = :hash AND expires_at > NOW()'
+        );
+        $stmt->execute(['hash' => hash('sha256', $token)]);
+        $row = $stmt->fetch();
+
+        return $row ? $row['email'] : null;
+    }
+
+    //Supprime la ligne de la table password_reset(pour qu'un token ne soit plus valide.)
+    public function deleteResetToken(string $token): void
+    {
+        $db = Database::getConnection();
+        $db->prepare('DELETE FROM password_resets WHERE token_hash = :hash')
+            ->execute(['hash' => hash('sha256', $token)]);
+    }
 }
 ?>
