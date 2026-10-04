@@ -1,5 +1,6 @@
 <?php 
     require_once 'header.php';
+
     start_page('Inscription', 'inscription');
     $errors = $errors ?? [];
 ?>
@@ -19,7 +20,6 @@
             <label for="email">Adresse e-mail</label>
             <input type="email" id="email" name="email" value="<?= $email ?? '' ?>" required>
 
-
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" minlength="8" required>
 
@@ -27,6 +27,7 @@
             <label for="password_confirm">Confirmation du mot de passe</label>
             <input type="password" id="password_confirm" name="password_confirm" minlength="8" required>
         </section>
+
 
         <div class="form-actions">
             <button type="submit">Je m'inscris</button>

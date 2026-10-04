@@ -56,3 +56,5 @@ Backups.backupdb
 MobileBackups.trash
 tmbootpicker.efi
 .idea/
+
+config.php
