@@ -12,4 +12,5 @@ Voici le github de notre SAE pour l'année de BUT 2.
 
 | Nom d'autre source | Pourquoi l'avoir utilisée | Qui l'a utilisée |
 | :--- | :--- | :--- |
-| ??? | ??? | ??? |
+| [Doc php](https://www.w3schools.com/php) | En vérification/trouver ce dont on avait besoin | Tous |
+| Notre Professeur | Avoir de l'aide quand on était coincé | Tous |
