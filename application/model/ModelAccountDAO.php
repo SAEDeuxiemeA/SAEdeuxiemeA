@@ -14,34 +14,34 @@ class ModelAccountDAO {
         }
         return null;
     }
-    public function createAccount(string $username, string $email, string $password): bool {
+    public function createAccount(string $login, string $email, string $password): bool {
         $db = Database::getConnection();
         //On hache le mot de passe pour la sécurité
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $db->prepare('INSERT INTO users (username, email, userpassword) VALUES (:username, :email, :password)');
         $result = $stmt->execute([
-            'username' => $username,
+            'username' => $login,
             'email' => $email,
             'password' => $passwordHash
         ]);
         return $result;
     }
-    public function modifyAvatar(string $username, string $picture): bool {
+    public function modifyAvatar(string $login, string $picture): bool {
         $db = Database::getConnection();
         //On met à jour la colonne picture uniquement pour l'utilisateur concerné
         $stmt = $db->prepare('UPDATE users SET picture = :picture WHERE username = :username');
         $result = $stmt->execute([
             'picture' => $picture,
-            'username' => $username
+            'username' => $login
         ]);
         return $result;
     }
-    public function deleteAccount(string $username): bool {
+    public function deleteAccount(string $login): bool {
         $db = Database::getConnection();
         //On supprime toute la ligne de l'utilisateur
         $stmt = $db->prepare('DELETE FROM users WHERE username = :username');
         $result = $stmt->execute([
-            'username' => $username
+            'username' => $login
         ]);
         return $result;
     }
