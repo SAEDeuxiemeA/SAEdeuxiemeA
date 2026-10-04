@@ -2,7 +2,7 @@
 namespace model;
 
 class ModelAccountDAO {
-    public function verifierConnexion(string $login, string $password): ?ModelAccount{
+    public function verifyConnection(string $login, string $password): ?ModelAccount{
         $db = Database::getConnexion();
 
         $stmt = $db->prepare('SELECT username, userpassword FROM user WHERE username = :login');
@@ -14,40 +14,40 @@ class ModelAccountDAO {
         }
         return null;
     }
-    public function creerCompte(string $username, string $email, string $password): bool {
+    public function createAccount(string $username, string $email, string $password): bool {
         $db = Database::getConnexion();
         //On hache le mot de passe pour la sécurité
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $db->prepare('INSERT INTO user (username, email, userpassword) VALUES (:username, :email, :password)');
-        $resultat = $stmt->execute([
+        $result = $stmt->execute([
             'username' => $username,
             'email' => $email,
             'password' => $passwordHash
         ]);
-        return $resultat;
+        return $result;
     }
-    public function modifierAvatar(string $username, string $picture): bool {
+    public function modifyAvatar(string $username, string $picture): bool {
         $db = Database::getConnexion();
         //On met à jour la colonne picture uniquement pour l'utilisateur concerné
         $stmt = $db->prepare('UPDATE user SET picture = :picture WHERE username = :username');
-        $resultat = $stmt->execute([
+        $result = $stmt->execute([
             'picture' => $picture,
             'username' => $username
         ]);
-        return $resultat;
+        return $result;
     }
-    public function supprimerCompte(string $username): bool {
+    public function deleteAccount(string $username): bool {
         $db = Database::getConnexion();
         //On supprime toute la ligne de l'utilisateur
         $stmt = $db->prepare('DELETE FROM user WHERE username = :username');
-        $resultat = $stmt->execute([
+        $result = $stmt->execute([
             'username' => $username
         ]);
-        return $resultat;
+        return $result;
     }
 
     //Vérifier si l'email existe (Mot de passe oublié)
-    public function trouverCompteParEmail(string $email): bool {
+    public function findAccountByEmail(string $email): bool {
         $db = Database::getConnexion();
         $stmt = $db->prepare('SELECT email FROM user WHERE email = :email');
         $stmt->execute(['email' => $email]);
@@ -56,15 +56,15 @@ class ModelAccountDAO {
     }
 
     //Mettre à jour le mot de passe
-    public function modifierMotDePasse(string $email, string $nouveauPassword): bool {
+    public function modifyPassword(string $email, string $newPassword): bool {
         $db = Database::getConnexion();
-        $passwordHash = password_hash($nouveauPassword, PASSWORD_DEFAULT);
+        $passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
         $stmt = $db->prepare('UPDATE user SET userpassword = :password WHERE email = :email');
-        $resultat = $stmt->execute([
+        $result = $stmt->execute([
             'password' => $passwordHash,
             'email' => $email
         ]);
-        return $resultat;
+        return $result;
     }
 }
 ?>
