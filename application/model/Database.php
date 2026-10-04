@@ -9,7 +9,7 @@ use RuntimeException;
 class Database{
     private static ?PDO $instance = null;
 
-    public static function getConnexion(): PDO {
+    public static function getConnection(): PDO {
         if (self::$instance === null) {
             $host = 'postgresql-bul.alwaysdata.net';
             $port = 5432; //5432 est le port par défaut sous postgreSQL
