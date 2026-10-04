@@ -81,7 +81,7 @@ class ModelAccountDAO
     public function findAccountByUsername(string $login): bool
     {
         $db = Database::getConnection();
-        $stmt = $db->prepare('SELECT username FROM users WHERE username = :username');
+        $stmt = $db->prepare('SELECT username FROM users WHERE username = :login');
         $stmt->execute(['username' => $login]);
         // Si fetch() trouve quelque chose ça renvoie true sinon false
         return $stmt->fetch() !== false;
