@@ -9,6 +9,7 @@ Voici le github de notre SAE pour l'année de BUT 2.
 | Claude & Gemini | Pour comprendre comment former les modèles et corriger | Ombeline & Mélissa |
 | Claude | Correction des erreurs/aide | Tommy |
 | Claude | Utiliser alwaysdata | Ombeline & Mélissa |
+| Claude | Récupération Mot de passe | Tommy |
 
 ## Utilisation d'autres sources hors IA
 
