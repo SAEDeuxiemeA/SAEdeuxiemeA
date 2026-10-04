@@ -1,6 +1,5 @@
 main {
-    width: 90%;
-    max-width: 900px;
+    width: calc(100% - 30px);
     margin: 20px auto;
     background-color: #d8d3d3;
     border-radius: 8px;
@@ -15,13 +14,11 @@ main h1 {
     text-align: center;
     font-size: 1.2rem;
     font-weight: normal;
-    font-style: italic;
     padding: 12px 20px;
     margin: 0 auto 25px auto;
-    border-radius: 4px;
+    border-radius: 10px;
     width: fit-content;
     max-width: 90%;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 main h2 {
@@ -80,6 +77,7 @@ main a {
 
 @media screen and (min-width: 1024px) {
     main {
+        min-height: calc(100vh - 160px);
         padding: 45px 50px;
         margin: 40px auto;
     }
@@ -87,6 +85,6 @@ main a {
     main h1 {
         font-size: 1.7rem;
         padding: 15px 40px;
-        margin-bottom: 35px;
+        margin-bottom: 40px;
     }
 }
