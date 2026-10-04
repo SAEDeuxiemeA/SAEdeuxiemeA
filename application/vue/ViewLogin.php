@@ -1,23 +1,24 @@
 <?php 
     require_once 'header.php';
-    start_page('Login');
+    start_page('Login', 'login');
 ?>
 <main>
-    <h1>Connexion</h1>
+    <h1 class="sr-only">Connexion</h1>
     <form method="POST" action="">
-        <div>
+        <div class="form-group">
             <label for="email">Email: </label>
             <input type="email" id="email" name="email">
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="password">MotDePasse: </label>
             <input type="password" id="password" name="password">
         </div>
 
-        <div>
+        <div class="form-actions">
             <button type="submit">Se connecter</button>
-            <a href="index.php?page=createacc&amp;action=index" class="btn">Je n'ai pas de compte</a>        </div>
+            <a href="index.php?page=createacc&amp;action=index" class="btn">Je n'ai pas de compte</a>        
+        </div>
     </form>
 </main>
 <?php

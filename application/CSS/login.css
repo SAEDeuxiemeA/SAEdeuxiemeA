@@ -1,0 +1,159 @@
+main {
+    width: 90%;
+    max-width: 700px;
+    min-height: 450px;
+    margin: 20px auto;
+    background-color: #d8d3d3; 
+    border-radius: 8px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-group {
+    width: 100%;
+}
+
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    font-style: italic;
+    color: #333333;
+    box-sizing: border-box;
+    outline: none;
+}
+
+form input::placeholder {
+    color: #333333;
+    font-style: italic;
+}
+
+.forgot-password-container {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.forgot-link {
+    background-color: #ffffff;
+    color: #333333;
+    text-decoration: none;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.form-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-submit,
+.btn-link {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 15px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-style: italic;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit:hover,
+.btn-link:hover,
+.forgot-link:hover {
+    background-color: #f0f0f0;
+}
+
+
+@media screen and (min-width: 768px) {
+    main {
+        padding: 60px 40px;
+        margin: 30px auto;
+        min-height: 500px;
+    }
+
+    form {
+        max-width: 450px;
+        gap: 20px;
+    }
+
+    form input[type="email"],
+    form input[type="password"] {
+        padding: 14px 18px;
+        font-size: 1.1rem;
+    }
+
+    .btn-submit,
+    .btn-link {
+        max-width: 320px;
+        padding: 14px 20px;
+        font-size: 1.1rem;
+    }
+
+    .forgot-link {
+        font-size: 0.85rem;
+        padding: 5px 15px;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    main {
+        padding: 80px 60px;
+        margin: 40px auto;
+        min-height: 550px;
+        max-width: 800px;
+    }
+
+    form input[type="email"],
+    form input[type="password"] {
+        font-size: 1.15rem;
+    }
+
+    .btn-submit,
+    .btn-link {
+        max-width: 340px;
+        font-size: 1.15rem;
+    }
+}

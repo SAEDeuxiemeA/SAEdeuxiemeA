@@ -1,5 +1,5 @@
 <?php
-    function start_page($title) : void 
+    function start_page($title, $css_page = null) : void 
     {
 ?><!DOCTYPE html>
 <html lang="fr"> 
@@ -7,26 +7,31 @@
     <meta charset="UTF-8">
     <title><?php echo $title; ?></title>
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <link rel="stylesheet" href="application/CSS/global.css">
+    <?php if ($css_page): ?>
+        <link rel="stylesheet" href="application/CSS/<?php echo $css_page; ?>.css">
+    <?php endif; ?>
 </head> 
 <body> 
     <header>
-        <ul>
-            <li>
-                <p>logo</p>
+        <ul class="header-top">
+            <li class="header-left">
+                <p class="logo">logo</p>
                 <button>?</button>
                 <button>M</button>
             </li>
-            <li>
+            <li class="header-center">
                 <strong>TECHDLE</strong>
             </li>
-            <li>
+            <li class="header-right">
                 <button>Parametre</button>
                 <button>Classement</button>
                 <button>Social</button>
                 <button>Profil</button>
             </li>
         </ul>
-        <nav>
+        <nav class="header-nav">
         <ul>
             <li><a href="index.php?page=home&amp;action=index">Home</a></li>
             <li><a href="index.php?page=login&amp;action=index">Log in</a></li>

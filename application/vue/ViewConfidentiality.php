@@ -1,6 +1,6 @@
 <?php 
     require_once 'header.php';
-    start_page('Confidentialite');
+    start_page('Confidentialite', 'confidentiality');
 ?>
 <main>
     <h1>Politique de confidentialité</h1>

@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #121213;
+    color: #ffffff;
+}
+
+header {
+    background-color: #1f1f23;
+    padding: 10px;
+    border-bottom: 1px solid #3a3a3c;
+}
+
+.header-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+}
+
+.header-left, .header-right {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.header-center strong {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.header-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #2a2a2d;
+}
+
+.header-nav a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+
+@media screen and (min-width: 768px) {
+    .header-top {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .header-nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    header {
+        padding: 15px 40px;
+    }
+
+    .header-nav ul {
+        gap: 25px;
+    }
+
+    .header-nav a:hover {
+        color: #ffffff;
+    }
+}
