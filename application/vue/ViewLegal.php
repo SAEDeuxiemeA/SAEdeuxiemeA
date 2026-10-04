@@ -1,6 +1,6 @@
 <?php 
     require_once 'header.php'; 
-    start_page('Legal');
+    start_page('Legal', 'legal');
 ?>
 <main>
     <h1>Mentions légales</h1>
