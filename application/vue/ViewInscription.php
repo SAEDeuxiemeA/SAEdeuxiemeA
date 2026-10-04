@@ -13,18 +13,19 @@
 
     <form action="index.php?page=createacc&amp;action=register" method="post" enctype="multipart/form-data">
         <section class="form-body">
-            <label for="login">Pseudo</label>
+            <label for="login" class="form label">Pseudo</label>
             <input type="text" id="login" name="login" maxlength="25" value="<?= $login ?? '' ?>" required>
 
 
-            <label for="email">Adresse e-mail</label>
+            <label for="email" class="form label">Adresse e-mail</label>
             <input type="email" id="email" name="email" value="<?= $email ?? '' ?>" required>
 
-            <label for="password">Mot de passe</label>
+
+            <label for="password" class="form label">Mot de passe</label>
             <input type="password" id="password" name="password" minlength="8" required>
 
 
-            <label for="password_confirm">Confirmation du mot de passe</label>
+            <label for="password_confirm" class="form label">Confirmation du mot de passe</label>
             <input type="password" id="password_confirm" name="password_confirm" minlength="8" required>
         </section>
 

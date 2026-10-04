@@ -38,6 +38,15 @@ form {
     width: 100%;
 }
 
+form label {
+    display: block;
+    color: #000000; 
+    font-size: 1rem;
+    text-align : right;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
 .avatar-section {
     display: flex;
     flex-direction: column;
