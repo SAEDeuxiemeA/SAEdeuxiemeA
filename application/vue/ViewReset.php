@@ -1,22 +1,27 @@
 <?php
-require_once __DIR__ . '/header.php';
-start_page('Nouveau mot de passe');
+    require_once __DIR__ . '/header.php';
+    start_page('Nouveau mot de passe', 'reset');
 ?>
     <main>
-        <h1>Nouveau mot de passe</h1>
-
         <?php if (!empty($error)): ?><p role="alert"><?= $error ?></p><?php endif; ?>
 
         <form action="index.php?page=password&amp;action=update" method="post">
-            <input type="hidden" name="token" value="<?= $token ?? ''?>">
+                <input type="hidden" name="token" value="<?= $token ?? ''?>">
 
-            <label for="password">Nouveau mot de passe</label>
-            <input type="password" id="password" name="password" minlength="8" required>
+                <div class="form-group">
+                    <label for="password" class="form label">Nouveau mot de passe</label>
+                    <input type="password" id="password" name="password" minlength="8" required>
+                </div>      
 
-            <label for="password_confirm">Confirmation</label>
-            <input type="password" id="password_confirm" name="password_confirm" minlength="8" required>
-
-            <button type="submit">Changer le mot de passe</button>
+                <div class="form-group">
+                    <label for="password_confirm" class="form label">Confirmation</label>
+                    <input type="password" id="password_confirm" name="password_confirm" minlength="8" required>
+                </div>
+            <div class="form-action">
+                <button type="submit" class="form-actions">Changer le mot de passe</button>
+            </div>
         </form>
     </main>
-<?php end_page();
+<?php 
+    end_page();
+?>
