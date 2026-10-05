@@ -3,17 +3,12 @@
     start_page('Password', 'mdp');
 ?>
 <main>
+    <h1>Mot de passe oublié</h1>
     <form method="POST" action="">
-        <div class="form-group">
-            <label for="newPassword" class="form label">Nouveau mot de passe :</label>
-            <input
-                    type="password" id="newPassword" name="newPassword">
-        </div>
-
-        <div class="form-group">
-            <label for="confirmPassword" class="form label">Confirmation du mot de passe :</label>
-            <input type="password" id="confirmPassword" name="confirmPassword">
-        </div>
+        <section class="form-body">
+            <label for="email" class="form label">Adresse e-mail</label>
+            <input type="email" id="email" name="email" value="<?= $email ?? '' ?>" required>
+        </section>
 
         <div class="form-actions">
             <button type="submit">Changer votre mot de passe</button>

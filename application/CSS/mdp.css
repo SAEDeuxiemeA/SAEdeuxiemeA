@@ -13,6 +13,21 @@ main {
     align-items: center;
 }
 
+main h1 {
+    display: block;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-style: italic;
+    padding: 10px 20px;
+    margin: 0 auto -120px auto; 
+    border-radius: 4px;
+    width: fit-content;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transform: translateY(-200px);
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -27,15 +42,18 @@ main {
 
 form {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 18px;
 }
 
 .form-group {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 form input[type="password"] {
@@ -66,9 +84,18 @@ form input::placeholder {
 form label {
     display: block;
     color: #000000; 
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 6px;
-    font-weight: 500;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
 }
 
 .btn-submit {
