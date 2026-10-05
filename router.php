@@ -8,7 +8,8 @@ class router
         'legal' => 'ControllerLegal',
         'login' => 'ControllerLogin',
         'password' => 'ControllerPassword',
-        'confidentiality' => 'ControllerConfidentiality'
+        'confidentiality' => 'ControllerConfidentiality',
+        'reset' => 'ControllerReset',
     ];
 
     const ROUTES_DEFAULT = 'home';

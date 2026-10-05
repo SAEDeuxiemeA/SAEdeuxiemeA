@@ -14,6 +14,8 @@
             <button type="submit">Changer votre mot de passe</button>
         </div>
     </form>
+    <li><a href="index.php?page=reset&amp;action=index">Reset</a></li>
+
 </main>
 <?php
     end_page();
