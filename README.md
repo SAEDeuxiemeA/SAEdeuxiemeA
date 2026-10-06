@@ -10,6 +10,8 @@ Voici le github de notre SAE pour l'année de BUT 2.
 | Claude | Correction des erreurs/aide | Tommy |
 | Claude | Utiliser alwaysdata | Ombeline & Mélissa |
 | Claude | Récupération Mot de passe | Tommy |
+| Gemini | Générer le CSS de chaque page | Anna |
+| Gemini | Validation W3C | Anna |
 
 ## Utilisation d'autres sources hors IA
 
