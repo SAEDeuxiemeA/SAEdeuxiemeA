@@ -88,7 +88,7 @@ class ModelAccountDAO
     }
 
     //Creation de Token pour reset le mot de passe
-    public function ceateResetToken(string $email): string {
+    public function createResetToken(string $email): string {
         $db = Database::getConnection();
         $db->prepare('DELETE FROM password_resets WHERE email = :email')
             ->execute(['email' => $email]);
