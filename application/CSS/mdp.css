@@ -81,7 +81,7 @@ form input::placeholder {
     margin-top: 30px;
 }
 
-form label {
+.form-label {
     display: block;
     color: #000000; 
     font-size: 1.1rem;

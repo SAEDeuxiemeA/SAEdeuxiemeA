@@ -3,18 +3,19 @@
     start_page('Nouveau mot de passe', 'reset');
 ?>
     <main>
-        <?php if (!empty($error)): ?><p role="alert"><?= $error ?></p><?php endif; ?>
+        <?php if (!empty($error)): ?>
+            <p role="alert"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
+        <?php endif; ?>
 
         <form action="index.php?page=password&amp;action=update" method="post">
-                <input type="hidden" name="token" value="<?= $token ?? ''?>">
-
+            <input type="hidden" name="token" value="<?= htmlspecialchars($token ?? '', ENT_QUOTES, 'UTF-8') ?>">
                 <div class="form-group">
-                    <label for="password" class="form label">Nouveau mot de passe</label>
+                    <label for="password" class="form-label">Nouveau mot de passe</label>
                     <input type="password" id="password" name="password" minlength="8" required>
                 </div>      
 
                 <div class="form-group">
-                    <label for="password_confirm" class="form label">Confirmation</label>
+                    <label for="password_confirm" class="form-label">Confirmation</label>
                     <input type="password" id="password_confirm" name="password_confirm" minlength="8" required>
                 </div>
             <div class="form-action">
