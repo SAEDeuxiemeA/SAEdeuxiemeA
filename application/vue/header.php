@@ -5,7 +5,8 @@
 <html lang="fr"> 
 <head> 
     <meta charset="UTF-8">
-    <title><?php echo $title; ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></title>
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
 
     <link rel="stylesheet" href="application/CSS/global.css">

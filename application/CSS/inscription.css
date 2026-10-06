@@ -38,7 +38,7 @@ form {
     width: 100%;
 }
 
-form label {
+.form-label {
     display: block;
     color: #000000; 
     font-size: 1rem;
