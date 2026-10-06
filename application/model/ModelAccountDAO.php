@@ -1,6 +1,9 @@
 <?php
 namespace model;
 
+require_once __DIR__ . '/Database.php';
+require_once __DIR__ . '/ModelAccount.php';
+
 class ModelAccountDAO
 {
     public function verifyConnection(string $login, string $password): ?ModelAccount

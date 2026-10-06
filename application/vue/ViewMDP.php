@@ -4,7 +4,7 @@
 ?>
 <main>
     <h1>Mot de passe oublié</h1>
-    <form method="POST" action="index.php?page=password&amp;action=reset">
+    <form method="POST" action="index.php?page=password&amp;action=send">
         <section class="form-body">
             <label for="email" class="form-label">Adresse e-mail</label>
             <input type="email" id="email" name="email" value="<?= htmlspecialchars($email ?? '', ENT_QUOTES, 'UTF-8') ?>" required>        </section>

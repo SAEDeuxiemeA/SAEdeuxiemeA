@@ -10,6 +10,7 @@ class ControllerLogin extends Controller
     public function index(): void {
         if (isset($_SESSION['login'])) {
             header('Location: index.php?page=home&action=index');
+            exit;
         }
         $this->render('ViewLogin');
     }
@@ -32,7 +33,7 @@ class ControllerLogin extends Controller
     }
 
     public function logout(): void {
-        $_SESSION[] = [];
+        $_SESSION = [];
         session_destroy();
 
         header('Location: index.php?page=home&action=index');

@@ -6,8 +6,11 @@
         <?php if (!empty($error)): ?>
             <p role="alert"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
         <?php endif; ?>
+        <?php if (!empty($message)): ?>
+            <p role="status"><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
+        <?php endif; ?>
 
-        <form action="index.php?page=password&amp;action=update" method="post">
+        <form action="index.php?page=password&amp;action=updatePassword" method="post">
             <input type="hidden" name="token" value="<?= htmlspecialchars($token ?? '', ENT_QUOTES, 'UTF-8') ?>">
                 <div class="form-group">
                     <label for="password" class="form-label">Nouveau mot de passe</label>

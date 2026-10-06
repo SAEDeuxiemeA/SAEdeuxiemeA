@@ -4,7 +4,10 @@
 ?>
 <main>
     <h1 class="sr-only">Connexion</h1>
-    <form method="POST" action="index.php?page=login&amp;action=login">
+    <?php if (!empty($error)): ?>
+        <p role="alert"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
+    <?php endif; ?>
+    <form method="POST" action="index.php?page=login&amp;action=auth">
         <div class="form-group">
             <label for="email" class="form-label">Email: </label>
             <input type="email" id="email" name="email" required>
@@ -17,7 +20,8 @@
 
         <div class="form-actions">
             <button type="submit">Se connecter</button>
-            <a href="index.php?page=createacc&amp;action=index" class="btn">Je n'ai pas de compte</a>        
+            <a href="index.php?page=createacc&amp;action=index" class="btn">Je n'ai pas de compte</a>
+            <a href="index.php?page=password&amp;action=index" class="btn">Mot de passe oublié ?</a>
         </div>
     </form>
 </main>

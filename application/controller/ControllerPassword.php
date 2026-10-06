@@ -48,7 +48,7 @@ class ControllerPassword extends Controller
     }
 
     public function updatePassword(): void{
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] != "POST") {
             header("Location: index.php?page=password&action=index");
             exit;
         }
@@ -73,7 +73,7 @@ class ControllerPassword extends Controller
             $error = 'Les mots de passe ne correspondent pas.';
         }
         if ($error !== null) {
-            $this->render('VueReset', ['title' => 'Nouveau mot de passe', 'token' => $token, 'error' => $error]);
+            $this->render('ViewReset', ['title' => 'Nouveau mot de passe', 'token' => $token, 'error' => $error]);
             return;
         }
         $dao->modifyPassword($email, $password);
