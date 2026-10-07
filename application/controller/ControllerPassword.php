@@ -18,11 +18,7 @@ class ControllerPassword extends Controller
 {
     /**
      * Affiche le formulaire « mot de passe oublié ».
-     */
-    public function index(): void{
-        $this->render('ViewMDP');
-    }
-    /**
+     *
      * Envoie un lien de réinitialisation par e-mail.
      *
      * Le message affiché est identique que l'adresse existe ou non, afin de
