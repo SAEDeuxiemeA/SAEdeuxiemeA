@@ -12,6 +12,8 @@ Voici le github de notre SAE pour l'année de BUT 2.
 | Claude | Récupération Mot de passe | Tommy |
 | Gemini | Générer le CSS de chaque page | Anna |
 | Gemini | Validation W3C | Anna |
+| Claude | Aide à la documentation PHPDoc | Kalvin |
+
 
 ## Utilisation d'autres sources hors IA
 
