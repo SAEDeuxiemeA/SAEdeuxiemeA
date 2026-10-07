@@ -40,6 +40,7 @@
             <li><a href="index.php?page=password&amp;action=index">Forgot your password?</a></li>
             <li><a href="index.php?page=legal&amp;action=index">Legal notice</a></li>
             <li><a href="index.php?page=confidentiality&amp;action=index">Confidentiality</a></li>
+            <li><a href="index.php?page=login&amp;action=logout">Log Out</a></li>
         </ul>
         </nav>
     </header>
