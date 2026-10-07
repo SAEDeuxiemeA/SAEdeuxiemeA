@@ -3,7 +3,7 @@
     start_page('Accueil', 'home');
 ?>
 <main>
-    <div class="bloc-grille">
+    <div class="bloc-grille"> <!--création d'une grille pour le jeu, non fonctionnelle-->
         <div class="grid">
             <?php for ($row = 0; $row < 6; $row++): ?>
                 <div class="row">
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="bloc-clavier">
+    <div class="bloc-clavier"> <!--création d'un clavier pour le jeu, non fonctionnel-->
         <div class="keyboard">
             <div class="keyboard-row">
                 <?php foreach (['A','Z','E','R','T','Y','U','I','O','P'] as $letter): ?>

@@ -10,7 +10,7 @@
             <p role="status"><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
         <?php endif; ?>
 
-        <form action="index.php?page=password&amp;action=updatePassword" method="post">
+        <form action="index.php?page=password&amp;action=updatePassword" method="post"> <!--formulaire pour changer de mot de passe-->
             <input type="hidden" name="token" value="<?= htmlspecialchars($token ?? '', ENT_QUOTES, 'UTF-8') ?>">
                 <div class="form-group">
                     <label for="password" class="form-label">Nouveau mot de passe</label>
