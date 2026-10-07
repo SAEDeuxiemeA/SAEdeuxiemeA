@@ -3,7 +3,7 @@
     start_page('Accueil', 'home');
 ?>
 <main>
-    <section class="bloc-grille">
+    <div class="bloc-grille">
         <div class="grid">
             <?php for ($row = 0; $row < 6; $row++): ?>
                 <div class="row">
@@ -13,9 +13,9 @@
                 </div>
             <?php endfor; ?>
         </div>
-    </section>
+    </div>
 
-    <section class="bloc-clavier">
+    <div class="bloc-clavier">
         <div class="keyboard">
             <div class="keyboard-row">
                 <?php foreach (['A','Z','E','R','T','Y','U','I','O','P'] as $letter): ?>
@@ -33,7 +33,7 @@
                 <?php endforeach; ?>
             </div>
         </div>
-    </section>
+    </div>
 </main>
 <?php
     end_page();
