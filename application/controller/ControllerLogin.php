@@ -7,6 +7,7 @@ require_once __DIR__ . "/Controller.php";
 require_once __DIR__ . "/../model/ModelAccountDAO.php";
 class ControllerLogin extends Controller
 {
+    //charger la vue login si l'utilisateur n'est pas déjà connecter
     public function index(): void {
         if (isset($_SESSION['login'])) {
             header('Location: index.php?page=home&action=index');
@@ -15,6 +16,7 @@ class ControllerLogin extends Controller
         $this->render('ViewLogin');
     }
 
+    //verification que le compte de l'utilisateur existe, sinon ça annule
     public function auth(): void {
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -32,6 +34,7 @@ class ControllerLogin extends Controller
         $this->render('ViewLogin', ['error' => "Username ou mot de passe incorrect", 'login' => $login,]);
     }
 
+    //fonction pour se déconnecter du site avec session_destroy
     public function logout(): void {
         $_SESSION = [];
         session_destroy();
