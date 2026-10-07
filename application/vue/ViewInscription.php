@@ -1,4 +1,15 @@
 <?php 
+
+    /**
+     * Vue du formulaire d'inscription.
+     *
+     * Variables fournies par le contrôleur (toutes facultatives) :
+     *
+     * @var string|null $login      Pseudo saisi, pour le réafficher après une erreur.
+     * @var string|null $email      Adresse e-mail saisie, idem.
+     * @var array|null  $errors     Messages d'erreur (clé `general`).
+     * @var string|null $validation Message d'erreur envoyé par ControllerCreateAcc.
+     */
     require_once 'header.php';
 
     start_page('Inscription', 'inscription');
