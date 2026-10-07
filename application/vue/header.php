@@ -35,12 +35,15 @@
         <nav class="header-nav">
         <ul>
             <li><a href="index.php?page=home&amp;action=index">Home</a></li>
-            <li><a href="index.php?page=login&amp;action=index">Log in</a></li>
-            <li><a href="index.php?page=createacc&amp;action=index">Create an account</a></li>
             <li><a href="index.php?page=password&amp;action=index">Forgot your password?</a></li>
             <li><a href="index.php?page=legal&amp;action=index">Legal notice</a></li>
             <li><a href="index.php?page=confidentiality&amp;action=index">Confidentiality</a></li>
-            <li><a href="index.php?page=login&amp;action=logout">Log Out</a></li>
+            <?php if (isset($_SESSION['login'])): ?>
+                <li><a href="index.php?page=login&amp;action=logout">Log Out</a></li>
+            <?php else: ?>
+                <li><a href="index.php?page=login&amp;action=index">Log In</a></li>
+                <li><a href="index.php?page=createacc&amp;action=index">Create an account</a></li>
+            <?php endif; ?>
         </ul>
         </nav>
     </header>
