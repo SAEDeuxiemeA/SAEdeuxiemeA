@@ -14,7 +14,6 @@
      *                              situé dans `application/CSS/`. Null pour n'utiliser que `global.css`.
     */
 
-    function start_page($title, $css_page = null) : void 
     function start_page($title, $css_page = null) : void //cette fonction permet de ne pas réécrire le head et header dans chaque vue. Elle est appelée dans chaque vue.
     {
 ?><!DOCTYPE html>
@@ -74,7 +73,6 @@
      *
      * @return void
      */
-    function end_page() : void
     function end_page() : void //tout comme start_page, cette fonction permet de ne pas se répéter dans chaque vue
     {
 ?>
