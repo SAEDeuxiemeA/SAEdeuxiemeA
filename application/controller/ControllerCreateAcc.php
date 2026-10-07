@@ -6,11 +6,34 @@ use model\ModelAccountDAO;
 require_once __DIR__ . "/Controller.php";
 require_once __DIR__ . "/../model/ModelAccountDAO.php";
 
+/**
+ * Contrôleur de la création de compte.
+ */
+
 class ControllerCreateAcc extends Controller
 {
+
+    /**
+     * Affiche le formulaire d'inscription.
+     */
+
     public function index(){
         $this->render('ViewInscription');
     }
+
+/**
+     * Valide les données saisies dans le formulaire d'inscription.
+     *
+     * Règles : pseudo de 1 à 25 caractères, email valide, mots de passe
+     * identiques et d'au moins 8 caractères.
+     *
+     * @param string $username         Pseudo choisi.
+     * @param string $email            Adresse e-mail.
+     * @param string $password         Mot de passe.
+     * @param string $password_confirm Confirmation du mot de passe.
+     *
+     * @return string|null Message d'erreur, ou null si les données sont valides.
+     */
 
     public function validation(string $username, string $email, string $password, string $password_confirm): ?string{
         if ($username == '' || $username == null || strlen($username) > 25 || strlen($username) < 1) {
@@ -27,6 +50,15 @@ class ControllerCreateAcc extends Controller
         }
         return null;
     }
+
+    /**
+     * Traite le formulaire d'inscription.
+     *
+     * Lit `login`, `email`, `password` et `password_confirm` dans `$_POST`,
+     * valide les données, vérifie que le pseudo et l'email ne sont pas déjà
+     * utilisés, puis crée le compte et redirige vers la connexion.
+     * En cas d'erreur, réaffiche le formulaire avec le message.
+     */
 
     public function register(){
         $login = $_POST['login'];
