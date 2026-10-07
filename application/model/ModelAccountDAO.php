@@ -11,7 +11,7 @@ class ModelAccountDAO
         $db = Database::getConnection();
 
         $stmt = $db->prepare('SELECT username, userpassword, email, picture FROM users WHERE username = :login');
-        $stmt->execute(['username' => $login]);
+        $stmt->execute(['login' => $login]);
         $row = $stmt->fetch();
 
         if ($row && password_verify($password, $row['userpassword'])) {
@@ -85,7 +85,7 @@ class ModelAccountDAO
     {
         $db = Database::getConnection();
         $stmt = $db->prepare('SELECT username FROM users WHERE username = :login');
-        $stmt->execute(['username' => $login]);
+        $stmt->execute(['login' => $login]);
         // Si fetch() trouve quelque chose ça renvoie true sinon false
         return $stmt->fetch() !== false;
     }
