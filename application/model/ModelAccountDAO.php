@@ -6,12 +6,12 @@ require_once __DIR__ . '/ModelAccount.php';
 
 class ModelAccountDAO
 {
-    public function verifyConnection(string $login, string $password): ?ModelAccount
+    public function verifyConnection(string $email, string $password): ?ModelAccount
     {
         $db = Database::getConnection();
 
         $stmt = $db->prepare('SELECT username, userpassword, email, picture FROM users WHERE username = :login');
-        $stmt->execute(['login' => $login]);
+        $stmt->execute(['email' => $email]);
         $row = $stmt->fetch();
 
         if ($row && password_verify($password, $row['userpassword'])) {

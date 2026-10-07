@@ -16,10 +16,10 @@ class ControllerLogin extends Controller
     }
 
     public function auth(): void {
-        $login = $_POST['login'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
         $dao = new ModelAccountDAO();
-        $account = $dao->verifyConnection($login, $password);
+        $account = $dao->verifyConnection($email, $password);
 
         if (!$account == null) {
             session_regenerate_id(true);
