@@ -13,7 +13,7 @@ class ControllerPassword extends Controller
     }
 
     public function send(): void{
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             header("Location: index.php?page=password&action=index");
             exit;
         }
