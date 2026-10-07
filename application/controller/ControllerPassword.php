@@ -6,8 +6,29 @@ use model\ModelAccountDAO;
 require_once __DIR__ . "/Controller.php";
 require_once __DIR__ . "/../model/ModelAccountDAO.php";
 
+/**
+ * Contrôleur du parcours « mot de passe oublié ».
+ *
+ * Étapes : saisie de l'email ({@see self::index()}), envoi du lien
+ * ({@see self::send()}), ouverture du lien ({@see self::reset()}),
+ * enregistrement du nouveau mot de passe ({@see self::updatePassword()}).
+ */
+
 class ControllerPassword extends Controller
 {
+    /**
+     * Affiche le formulaire « mot de passe oublié ».
+     */
+    public function index(): void{
+        $this->render('ViewMDP');
+    }
+    /**
+     * Envoie un lien de réinitialisation par e-mail.
+     *
+     * Le message affiché est identique que l'adresse existe ou non, afin de
+     * ne pas révéler quels comptes existent. Le lien contient un jeton valable
+     * 1 heure.
+     */
     //charger la vue oublie de mot de passe
     public function index(): void{
         $this->render('ViewMDP');
@@ -36,6 +57,11 @@ class ControllerPassword extends Controller
         ]);
     }
 
+
+     /**
+     * Vérifie le jeton du lien (`$_GET['token']`) et affiche le formulaire
+     * de nouveau mot de passe s'il est valide ; sinon affiche une erreur.
+     */
     //fonction pour renvoyer l'utilisateur vers la page reset
     public function reset(): void{
         $token = $_GET['token'] ?? '';
@@ -51,6 +77,14 @@ class ControllerPassword extends Controller
         $this->render('ViewReset', ['token' => $token]);
     }
 
+    /**
+     * Enregistre le nouveau mot de passe.
+     *
+     * Vérifie le jeton, la longueur (8 caractères minimum) et la
+     * confirmation du mot de passe. En cas de succès, met à jour le mot de
+     * passe, supprime le jeton (usage unique) et redirige vers la connexion.
+     */
+    
     //fonction pour modifier le mot de passe
     public function updatePassword(): void{
         if ($_SERVER["REQUEST_METHOD"] != "POST") {
@@ -90,6 +124,19 @@ class ControllerPassword extends Controller
 
     }
 
+
+    /**
+     * Envoie le mail contenant le lien de réinitialisation.
+     *
+     * Si `mail()` échoue, le lien est écrit dans le
+     * journal d'erreurs PHP pour pouvoir tester le parcours.
+     *
+     * @param string $email Adresse du destinataire.
+     * @param string $link  Lien de réinitialisation à insérer dans le mail.
+     * @param string $from  Adresse de l'expéditeur (clé `mailFrom` de la config).
+     *
+     * @return bool true si le mail a été accepté pour envoi, false sinon.
+     */
     //fonction qui permet à renvoyé le mail
     private function sendMail(string $email, string $link, string $from): bool
     {

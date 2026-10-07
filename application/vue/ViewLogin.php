@@ -1,4 +1,13 @@
 <?php 
+
+    /**
+     * Vue du formulaire de connexion.
+     *
+     * Variables fournies par le contrôleur (toutes facultatives) :
+     *
+     * @var string|null $error Message d'erreur d'authentification.
+     * @var string|null $login Pseudo saisi, pour le réafficher après une erreur.
+     */
     require_once 'header.php';
     start_page('Login', 'login');
 ?>

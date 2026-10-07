@@ -1,4 +1,15 @@
 <?php 
+
+    /**
+     * Vue du formulaire « mot de passe oublié ».
+     *
+     * Variables fournies par le contrôleur (toutes facultatives) :
+     *
+     * @var string|null $email   Adresse e-mail saisie.
+     * @var string|null $message Message de confirmation d'envoi.
+     * @var string|null $error   Message d'erreur (lien invalide ou expiré).
+     */
+
     require_once 'header.php';
     start_page('Password', 'mdp');
 ?>

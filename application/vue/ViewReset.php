@@ -1,4 +1,14 @@
 <?php
+
+    /**
+     * Vue du formulaire de nouveau mot de passe.
+     *
+     * Variables fournies par le contrôleur (toutes facultatives) :
+     *
+     * @var string|null $token Jeton de réinitialisation, renvoyé dans un champ caché.
+     * @var string|null $error Message d'erreur de validation.
+     */
+
     require_once __DIR__ . '/header.php';
     start_page('Nouveau mot de passe', 'reset');
 ?>
