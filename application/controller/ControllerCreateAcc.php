@@ -8,10 +8,12 @@ require_once __DIR__ . "/../model/ModelAccountDAO.php";
 
 class ControllerCreateAcc extends Controller
 {
+    //charger la vue Inscription
     public function index(){
         $this->render('ViewInscription');
     }
 
+    //verification que les données de l'utilisateur sont correctes et sécurisé
     public function validation(string $username, string $email, string $password, string $password_confirm): ?string{
         if ($username == '' || $username == null || strlen($username) > 25 || strlen($username) < 1) {
             return "Le username doit être entre 1 et 25 caracteres";
@@ -28,19 +30,23 @@ class ControllerCreateAcc extends Controller
         return null;
     }
 
+    //enregistre le compte dans la base de donnée
     public function register(){
         $login = $_POST['login'];
         $email = $_POST['email'];
         $password = $_POST['password'];
         $password_confirm = $_POST['password_confirm'];
 
+        //verifie si les données de l'utilisateur sont correctes.
         $validation = $this->validation($login, $email, $password, $password_confirm);
 
         if ($validation === null){
             $account = new ModelAccountDAO();
+            //si le compte existe déjà, enregistre erreur
             if ($account->findAccountByUsername($login) || $account->findAccountByEmail($email)){
                 $validation = "Username ou email déjà existant";
             }
+            //si la création du compte et bon, cela charge la page login
             elseif ($account->createAccount($login, $email, $password)){
                 header('Location: index.php?page=login&action=index');
                 exit;

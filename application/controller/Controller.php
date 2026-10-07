@@ -2,6 +2,7 @@
 
 namespace controller;
 
+//fichier parent des autres controllers pour charger les vues
 class Controller
 {
     function render(string $view, array $data = []): void{
