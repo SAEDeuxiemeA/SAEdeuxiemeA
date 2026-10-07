@@ -29,6 +29,12 @@ class ControllerPassword extends Controller
      * ne pas révéler quels comptes existent. Le lien contient un jeton valable
      * 1 heure.
      */
+    //charger la vue oublie de mot de passe
+    public function index(): void{
+        $this->render('ViewMDP');
+    }
+
+    //envoie de mail pour changer le mot de passe
     public function send(): void{
         if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             header("Location: index.php?page=password&action=index");
@@ -38,6 +44,7 @@ class ControllerPassword extends Controller
         $email = $_POST['email'] ?? '';
         $dao = new ModelAccountDAO();
 
+        //si mail est valide et c'est utiliser dans la base de donnée, cela créer un token et envoi le mail.
         if (filter_var($email, FILTER_VALIDATE_EMAIL) && $dao->findAccountByEmail($email)) {
             $token = $dao->createResetToken($email);
             $config = require __DIR__ . "/../../config.php";
@@ -55,13 +62,14 @@ class ControllerPassword extends Controller
      * Vérifie le jeton du lien (`$_GET['token']`) et affiche le formulaire
      * de nouveau mot de passe s'il est valide ; sinon affiche une erreur.
      */
+    //fonction pour renvoyer l'utilisateur vers la page reset
     public function reset(): void{
         $token = $_GET['token'] ?? '';
         $dao = new ModelAccountDAO();
 
         if ($token === '' || $dao->findEmailByToken($token) === null) {
             $this->render('ViewMDP', [
-                'error' => 'Ce lien esst invalide ou a expiré'
+                'error' => 'Ce lien est invalide ou a expiré'
             ]);
             return;
         }
@@ -77,18 +85,19 @@ class ControllerPassword extends Controller
      * passe, supprime le jeton (usage unique) et redirige vers la connexion.
      */
     
+    //fonction pour modifier le mot de passe
     public function updatePassword(): void{
         if ($_SERVER["REQUEST_METHOD"] != "POST") {
             header("Location: index.php?page=password&action=index");
             exit;
         }
-
         $token = $_POST['token'] ?? '';
         $password = $_POST['password'] ?? '';
         $password_confirm = $_POST['password_confirm'] ?? '';
         $dao = new ModelAccountDAO();
         $email = $dao->findEmailByToken($token);
 
+        //si le mail n'a pas de token dans la base de donnée, cela renvoie un erreur
         if ($email === null) {
             $this->render('ViewMDP', [
                 'error' => 'Ce lien est invalide'
@@ -96,6 +105,7 @@ class ControllerPassword extends Controller
             return;
         }
 
+        //verification de mot de passe
         $error = null;
         if (strlen($password) < 8) {
             $error = 'Le mot de passe doit contenir au moins 8 caractères.';
@@ -107,7 +117,7 @@ class ControllerPassword extends Controller
             return;
         }
         $dao->modifyPassword($email, $password);
-        $dao->deleteResetToken($token); // the link works only once
+        $dao->deleteResetToken($token);
 
         header('Location: index.php?page=login&action=index');
         exit;
@@ -127,6 +137,7 @@ class ControllerPassword extends Controller
      *
      * @return bool true si le mail a été accepté pour envoi, false sinon.
      */
+    //fonction qui permet à renvoyé le mail
     private function sendMail(string $email, string $link, string $from): bool
     {
         $subject = 'Réinitialisation de votre mot de passe';

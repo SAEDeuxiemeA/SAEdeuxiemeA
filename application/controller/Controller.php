@@ -10,6 +10,7 @@ namespace controller;
  * (ControllerHome, ControllerLogin, etc.) en héritent.
  */
 
+//fichier parent des autres controllers pour charger les vues
 class Controller
 {
 

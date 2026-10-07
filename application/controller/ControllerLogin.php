@@ -23,6 +23,7 @@ class ControllerLogin extends Controller
      * si un utilisateur est déjà connecté.
      */
 
+    //charger la vue login si l'utilisateur n'est pas déjà connecter
     public function index(): void {
         if (isset($_SESSION['login'])) {
             header('Location: index.php?page=home&action=index');
@@ -41,6 +42,7 @@ class ControllerLogin extends Controller
      * En cas d'échec : réaffiche le formulaire avec un message d'erreur.
      */
 
+    //verification que le compte de l'utilisateur existe, sinon ça annule
     public function auth(): void {
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -62,6 +64,7 @@ class ControllerLogin extends Controller
      * Déconnecte l'utilisateur : détruit la session et redirige vers l'accueil.
      */
 
+    //fonction pour se déconnecter du site avec session_destroy
     public function logout(): void {
         $_SESSION = [];
         session_destroy();

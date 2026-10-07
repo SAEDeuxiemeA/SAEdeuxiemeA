@@ -2,6 +2,7 @@
 
 class router
 {
+    //tout les routes possible qui peut être acceder par l'utilisateur
     const ROUTES_AVAIL = [
         'home' => 'ControllerHome',
         'createacc' => 'ControllerCreateAcc',
@@ -12,9 +13,11 @@ class router
         'reset' => 'ControllerReset',
     ];
 
+    //routes par défaut
     const ROUTES_DEFAULT = 'home';
     const ACTION_DEFAULT = 'index';
 
+    //fonction qui ramène qui vérifie si une page existe et que l'action de cette page éxiste et les appels.
     public function routerRequete(): void
     {
         $page = $_GET['page'] ?? self::ROUTES_DEFAULT;

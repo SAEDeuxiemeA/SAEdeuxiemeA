@@ -12,6 +12,7 @@ class ControllerConfidentiality extends Controller
     /**
     * Affiche la page de politique de confidentialité.
     */
+    //charger la vue Confidentiality
     public function index(): void{
         $this->render('ViewConfidentiality');
     }

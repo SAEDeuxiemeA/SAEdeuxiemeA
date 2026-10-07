@@ -13,6 +13,7 @@ class ControllerReset extends Controller
     /**
      * Affiche le formulaire de nouveau mot de passe.
      */
+    //charger la vue reset
     public function index(): void{
         $this->render('ViewReset');
     }
