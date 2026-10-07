@@ -1,4 +1,14 @@
 <?php 
+
+    /**
+     * Vue de la page de politique de confidentialité.
+     *
+     * Page statique : aucune variable n'est attendue du contrôleur.
+     * Contenu : responsable du traitement, données collectées, finalités,
+     * base légale, durée de conservation, partage, cookies et droits des
+     * utilisateurs (RGPD).
+     */
+
     require_once 'header.php';
     start_page('Confidentialite', 'confidentiality');
 ?>
