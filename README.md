@@ -19,3 +19,13 @@ Voici le github de notre SAE pour l'année de BUT 2.
 | :--- | :--- | :--- |
 | [Doc php](https://www.w3schools.com/php) | En vérification/trouver ce dont on avait besoin | Tous |
 | Olivier Gerard | parce que c'est le GOAT | Tous |
+| [MVC1](https://bpesquet.developpez.com/tutoriels/php/evoluer-architecture-mvc/) | Utiliser comme guide pour la MVC/Contrôleurs | Tommy |
+| [MVC2](https://medium.com/@dilankayasuru/budling-a-minimal-mvc-application-in-vanilla-php-a-step-by-step-guide-75c185604c65) | Utiliser comme guide pour la MVC/Contrôleurs | Tommy |
+| [MVC3](https://dyma.fr/blog/introduction-au-mvc-avec-php/) | Utiliser comme guide pour la MVC/Contrôleurs | Tommy |
+| [MVC4](https://laconsole.dev/formations/php/design-pattern-mvc) | Utiliser comme guide pour la MVC/Contrôleurs | Tommy |
+| [Mail](https://blog.crea-troyes.fr/3619/comment-verifier-et-valider-une-adresse-mail-en-php/) | Vérifier si l'élément est un email| Tommy |
+| [Login](https://blog.crea-troyes.fr/4650/coder-un-formulaire-de-login-securise-en-php-tutoriel/#aioseo-etape-1-creation-de-la-base-de-donnees) | Idée pour comment ça marche une page de login| Tommy |
+| [Password](https://phppot.com/php/php-forgot-password-recover-code/) | Idée pour comment ça marche une système d'oublie de mot de passe | Tommy |
+
+
+
