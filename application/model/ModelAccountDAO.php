@@ -10,7 +10,7 @@ class ModelAccountDAO
     {
         $db = Database::getConnection();
 
-        $stmt = $db->prepare('SELECT username, userpassword, email, picture FROM users WHERE username = :login');
+        $stmt = $db->prepare('SELECT username, userpassword, email, picture FROM users WHERE email = :email');
         $stmt->execute(['email' => $email]);
         $row = $stmt->fetch();
 
