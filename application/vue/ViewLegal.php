@@ -1,4 +1,12 @@
 <?php 
+
+    /**
+     * Vue de la page des mentions légales.
+     *
+     * Page statique : aucune variable n'est attendue du contrôleur.
+     * Contenu : éditeur du site, propriété intellectuelle, données personnelles.
+     */
+    
     require_once 'header.php'; 
     start_page('Legal', 'legal');
 ?>
