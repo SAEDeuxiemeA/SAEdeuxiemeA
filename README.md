@@ -32,6 +32,9 @@ Voici le github de notre SAE pour l'année de BUT 2.
 | [PlantUML](https://plantuml.com/fr/) | Génération de diagrammes UML | Mélissa |
 | [Documentation PlantUML – Diagrammes de classes](https://plantuml.com/fr/class-diagram) | Syntaxe des normes UML | Mélissa |
 | [Documentation PlantUML – Diagrammes de séquence](https://plantuml.com/fr/sequence-diagram) | Syntaxe des normes UML | Mélissa |
+| [Documentation PlantUML – Diagrammes de séquence](https://plantuml.com/fr/sequence-diagram) | Syntaxe des normes UML | Mélissa |
+| [Documentation officielle PostgreSQL](https://www.postgresql.org/docs/) | Utilisé pour la conception de la base de données | Mélissa |
+| [Refactoring.guru – Singleton](https://refactoring.guru/fr/design-patterns/singleton) | Modélisation et implémentation du pattern Singleton | Mélissa |
 
 
 ## Architecture logicielle
