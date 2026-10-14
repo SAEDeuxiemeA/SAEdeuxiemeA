@@ -39,4 +39,4 @@ Voici le github de notre SAE pour l'année de BUT 2.
 ## Architecture logicielle (UML)
 
 ### Diagramme de classes
-![Diagramme de classes](diagramme_modele.png)
+![Diagramme de classes](UML.png)
