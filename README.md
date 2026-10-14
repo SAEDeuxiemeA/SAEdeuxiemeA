@@ -36,7 +36,7 @@ Voici le github de notre SAE pour l'année de BUT 2.
 | [Refactoring.guru – Singleton](https://refactoring.guru/fr/design-patterns/singleton) | Modélisation et implémentation du pattern Singleton | Mélissa |
 
 
-## Architecture logicielle
+## Architecture logicielle (UML)
 
-### Couche Modèle
-![Diagramme de classes du Modèle](diagramme_modele.png)
+### Diagramme de classes
+![Diagramme de classes](diagramme_modele.png)
