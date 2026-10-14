@@ -29,5 +29,8 @@ Voici le github de notre SAE pour l'année de BUT 2.
 | [Login](https://blog.crea-troyes.fr/4650/coder-un-formulaire-de-login-securise-en-php-tutoriel/#aioseo-etape-1-creation-de-la-base-de-donnees) | Idée pour comment ça marche une page de login| Tommy |
 | [Password](https://phppot.com/php/php-forgot-password-recover-code/) | Idée pour comment ça marche une système d'oublie de mot de passe | Tommy |
 
+## Architecture logicielle
 
+### Couche Modèle
+![Diagramme de classes du Modèle](diagramme_modele.png)
 
