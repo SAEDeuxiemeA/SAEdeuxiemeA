@@ -27,7 +27,7 @@ class Database{
      *
      * @throws RuntimeException Si la connexion à la base échoue.
      */
-
+    private function __construct() {}
     public static function getConnection(): PDO {
         if (self::$instance === null) {
             $host = 'postgresql-bul.alwaysdata.net';
