@@ -1,4 +1,4 @@
-CREATE Table users ( /*user au singulier est un mot réservé*/
+CREATE TABLE users ( /*user au singulier est un mot réservé*/
     username VARCHAR(25) PRIMARY KEY,
     picture VARCHAR(255),
     email VARCHAR(255) UNIQUE NOT NULL,
@@ -6,7 +6,8 @@ CREATE Table users ( /*user au singulier est un mot réservé*/
     is_admin BOOLEAN DEFAULT FALSE NOT NULL, /*ouvrir l'accès à la page d'ajout de mots à l'admin*/
     point INT DEFAULT 0 NOT NULL
 );
-CREATE Table password_resets (
+
+CREATE TABLE password_resets (
     token_hash VARCHAR(64) PRIMARY KEY,
     email      VARCHAR(255) NOT NULL REFERENCES users(email) ON DELETE CASCADE,
     expires_at TIMESTAMP NOT NULL
@@ -17,8 +18,8 @@ CREATE TABLE words (
     word VARCHAR(25) UNIQUE NOT NULL,
     length INT NOT NULL,
     category VARCHAR(50) NOT NULL,
-    daily_date DATE UNIQUE)
-;
+    daily_date DATE UNIQUE
+);
 
 CREATE TABLE games (
     id SERIAL PRIMARY KEY,
@@ -44,7 +45,7 @@ CREATE TABLE guesses (
     id SERIAL PRIMARY KEY,
     attempt_number INT NOT NULL,
     guess_word VARCHAR(25) NOT NULL,
-    game_id INT NOT NULL REFERENCES daily_game(game_id) ON DELETE CASCADE
+    game_id INT NOT NULL REFERENCES games(id) ON DELETE CASCADE
 );
 
 CREATE TABLE rooms (
@@ -56,6 +57,6 @@ CREATE TABLE rooms (
 
 CREATE TABLE is_in (
     username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE,
-    room_id INT NOT NULL REFERENCES room(room_id) ON DELETE CASCADE,
+    room_id INT NOT NULL REFERENCES room(id) ON DELETE CASCADE,
     PRIMARY KEY (username, room_id)
 );
