@@ -45,3 +45,10 @@ CREATE TABLE guesses (
     guess_word VARCHAR(25) NOT NULL,
     game_id INT NOT NULL REFERENCES daily_game(game_id) ON DELETE CASCADE
 );
+
+CREATE TABLE rooms (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(255) UNIQUE NOT NULL,
+    username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE, /*créateur de la room*/
+    word_id INT NOT NULL REFERENCES words(id) ON DELETE CASCADE
+);
