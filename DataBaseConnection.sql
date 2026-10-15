@@ -38,3 +38,10 @@ CREATE TABLE friends (
     PRIMARY KEY (user_1, user_2),
     CHECK (user_1 != user_2)
 );
+
+CREATE TABLE guesses (
+    id SERIAL PRIMARY KEY,
+    attempt_number INT NOT NULL,
+    guess_word VARCHAR(25) NOT NULL,
+    game_id INT NOT NULL REFERENCES daily_game(game_id) ON DELETE CASCADE
+);
