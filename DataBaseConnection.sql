@@ -3,7 +3,8 @@ CREATE Table users ( /*user au singulier est un mot réservé*/
     picture VARCHAR(255),
     email VARCHAR(255) UNIQUE NOT NULL,
     userpassword VARCHAR(255) NOT NULL,
-    is_admin BOOLEAN DEFAULT FALSE NOT NULL /*ouvrir l'accès à la page d'ajout de mots à l'admin*/
+    is_admin BOOLEAN DEFAULT FALSE NOT NULL, /*ouvrir l'accès à la page d'ajout de mots à l'admin*/
+    point INT DEFAULT 0 NOT NULL
 );
 CREATE Table password_resets (
     token_hash VARCHAR(64) PRIMARY KEY,
@@ -23,8 +24,7 @@ CREATE TABLE games (
     id SERIAL PRIMARY KEY,
     username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE, /*Si le joueur supprime son compte son historique s'efface*/
     word_id INT NOT NULL REFERENCES words(id) ON DELETE CASCADE, /*Relie la partie au mot qui devait être deviné*/
-    mode VARCHAR(20) NOT NULL,    
-    attempts INT NOT NULL,  
+    attempts INT NOT NULL,
     time_seconds INT,
     is_won BOOLEAN NOT NULL, 
     played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
