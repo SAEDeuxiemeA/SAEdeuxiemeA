@@ -24,6 +24,7 @@ CREATE TABLE games (
     id SERIAL PRIMARY KEY,
     username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE, /*Si le joueur supprime son compte son historique s'efface*/
     word_id INT NOT NULL REFERENCES words(id) ON DELETE CASCADE, /*Relie la partie au mot qui devait être deviné*/
+    room_id INT REFERENCES rooms(id) ON DELETE CASCADE, /*NULL si partie Daily solo, ou numéro du salon si multijoueur*/
     attempts INT NOT NULL,
     time_seconds INT,
     is_won BOOLEAN NOT NULL, 
