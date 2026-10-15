@@ -29,3 +29,12 @@ CREATE TABLE games (
     is_won BOOLEAN NOT NULL, 
     played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE friends (
+    user_1 VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE, /*celui qui envoie la demande*/
+    user_2 VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE, /*celui qui reçoit la demande*/
+    status VARCHAR(20) NOT NULL DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_1, user_2),
+    CHECK (user_1 != user_2)
+);
