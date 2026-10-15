@@ -52,3 +52,9 @@ CREATE TABLE rooms (
     username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE, /*créateur de la room*/
     word_id INT NOT NULL REFERENCES words(id) ON DELETE CASCADE
 );
+
+CREATE TABLE is_in (
+    username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE,
+    room_id INT NOT NULL REFERENCES room(room_id) ON DELETE CASCADE,
+    PRIMARY KEY (username, room_id)
+);
