@@ -160,6 +160,19 @@ class ModelAccountDAO
         return $stmt->fetch() !== false;
     }
 
+    public function getAccountByUsername(string $login): ?ModelAccount
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare('SELECT username, userpassword, email, picture FROM users WHERE username = :login');
+        $stmt->execute(['login' => $login]);
+        $row = $stmt->fetch();
+
+        if ($row) {
+            return new ModelAccount($row['username'], $row['userpassword'], $row['email'], $row['picture']);
+        }
+        return null;
+    }
+
     /**
      * Crée un jeton de réinitialisation de mot de passe valable 1 heure.
      *
