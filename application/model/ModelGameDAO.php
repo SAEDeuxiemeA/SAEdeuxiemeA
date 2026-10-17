@@ -77,5 +77,93 @@ class ModelGameDAO
         $stmt->execute(['game_id' => $gameId]);
         return $stmt->fetchAll();
     }
+
+    public function getGameById(int $gameId): ?ModelGame
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare(
+            'SELECT id, username, word_id, room_id, attempts, time_seconds, is_won, played_at 
+             FROM games 
+             WHERE id = :id'
+        );
+        $stmt->execute(['id' => $gameId]);
+        $row = $stmt->fetch();
+        if ($row) {
+            $guesses = $this->getGuessesByGameId((int) $row['id']);
+            return new ModelGame(
+                (int) $row['id'],
+                $row['username'],
+                (int) $row['word_id'],
+                $row['room_id'] !== null ? (int) $row['room_id'] : null,
+                (int) $row['attempts'],
+                $row['time_seconds'] !== null ? (int) $row['time_seconds'] : null,
+                (bool) $row['is_won'],
+                $row['played_at'],
+                $guesses
+            );
+        }
+        return null;
+    }
+
+    public function getDailyGameByUser(string $username, int $wordId): ?ModelGame
+    {
+        $db = Database::getConnection();
+        //room_id IS NULL pour la partie Daily
+        $stmt = $db->prepare(
+            'SELECT id, username, word_id, room_id, attempts, time_seconds, is_won, played_at 
+             FROM games 
+             WHERE username = :username AND word_id = :word_id AND room_id IS NULL'
+        );
+        $stmt->execute([
+            'username' => $username,
+            'word_id'  => $wordId
+        ]);
+        $row = $stmt->fetch();
+        if ($row) {
+            $guesses = $this->getGuessesByGameId((int) $row['id']);
+            return new ModelGame(
+                (int) $row['id'],
+                $row['username'],
+                (int) $row['word_id'],
+                null,
+                (int) $row['attempts'],
+                $row['time_seconds'] !== null ? (int) $row['time_seconds'] : null,
+                (bool) $row['is_won'],
+                $row['played_at'],
+                $guesses
+            );
+        }
+        return null;
+    }
+
+    public function getRoomGameByUser(string $username, int $roomId): ?ModelGame
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare(
+            'SELECT id, username, word_id, room_id, attempts, time_seconds, is_won, played_at 
+             FROM games 
+             WHERE username = :username AND room_id = :room_id'
+        );
+        $stmt->execute([
+            'username' => $username,
+            'room_id'  => $roomId
+        ]);
+        $row = $stmt->fetch();
+        if ($row) {
+            $guesses = $this->getGuessesByGameId((int) $row['id']);
+            return new ModelGame(
+                (int) $row['id'],
+                $row['username'],
+                (int) $row['word_id'],
+                (int) $row['room_id'],
+                (int) $row['attempts'],
+                $row['time_seconds'] !== null ? (int) $row['time_seconds'] : null,
+                (bool) $row['is_won'],
+                $row['played_at'],
+                $guesses
+            );
+        }
+        return null;
+    }
 }
 ?>
