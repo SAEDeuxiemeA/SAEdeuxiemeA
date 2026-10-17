@@ -11,6 +11,7 @@ class router
         'password' => 'ControllerPassword',
         'confidentiality' => 'ControllerConfidentiality',
         'reset' => 'ControllerReset',
+        'profile' => 'ControllerProfile',
     ];
 
     //routes par défaut
