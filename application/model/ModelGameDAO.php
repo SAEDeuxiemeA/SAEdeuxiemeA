@@ -38,5 +38,44 @@ class ModelGameDAO
             'id'           => $gameId
         ]);
     }
+
+    public function addGuess(int $gameId, int $attemptNumber, string $guessWord): bool
+    {
+        $db = Database::getConnection();
+        $cleanGuess = strtoupper(trim($guessWord)); //nettoie le mot tapé
+        $stmt = $db->prepare(
+            'INSERT INTO guesses (game_id, attempt_number, guess_word) 
+             VALUES (:game_id, :attempt_number, :guess_word)'
+        );
+
+        $inserted = $stmt->execute([
+            'game_id'        => $gameId,
+            'attempt_number' => $attemptNumber,
+            'guess_word'     => $cleanGuess
+        ]);
+        //met à jour le compteur d'essais dans la table games
+        if ($inserted) {
+            $updateStmt = $db->prepare('UPDATE games SET attempts = :attempts WHERE id = :id');
+            $updateStmt->execute([
+                'attempts' => $attemptNumber,
+                'id'       => $gameId
+            ]);
+        }
+        return $inserted;
+    }
+
+    public function getGuessesByGameId(int $gameId): array
+    {
+        $db = Database::getConnection();
+        //Tri croissant pour récupérer les lignes de la grille dans l'ordre
+        $stmt = $db->prepare(
+            'SELECT attempt_number, guess_word 
+             FROM guesses 
+             WHERE game_id = :game_id 
+             ORDER BY attempt_number ASC'
+        );
+        $stmt->execute(['game_id' => $gameId]);
+        return $stmt->fetchAll();
+    }
 }
 ?>
