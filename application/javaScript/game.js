@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const maxCols = 5;
     
     const secretWord = ""; //Mot à trouver, à voir avec Mélissa
-
+    const startTime = Math.floor(Date.now() / 1000);
+    const wordId = 1;
     const keys = document.querySelectorAll(".key");
     keys.forEach(key => {
         key.addEventListener("click", () => {
@@ -97,6 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (guessWord === secretWord) {
             setTimeout(() => alert("Bravo, tu as gagné !"), 200);
+            //On calcule le temps passé et on envoie la sauvegarde (isWon = true)
+            const timeSeconds = Math.floor(Date.now() / 1000) - startTime;
+            saveGameResult(wordId, currentRow + 1, timeSeconds, true);
             return;
         }
 
@@ -105,6 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (currentRow === maxRows) {
             setTimeout(() => alert(`Partie terminée ! Le mot était : ${secretWord}`), 200);
+            // On calcule le temps passé et on envoie la sauvegarde (isWon = false)
+            const timeSeconds = Math.floor(Date.now() / 1000) - startTime;
+            saveGameResult(wordId, maxRows, timeSeconds, false);
         }
     }
 
@@ -121,5 +128,24 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (status === "absent" && !key.classList.contains("present")) {
             key.classList.add("absent");
         }
+    }
+    function saveGameResult(wordId, attempts, timeSeconds, isWon) {
+        const resultData = {
+            word_id: wordId,
+            attempts: attempts,
+            time_seconds: timeSeconds,
+            is_won: isWon
+        };
+
+        fetch('index.php?action=saveGame', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(resultData)
+        })
+            .then(response => response.json())
+            .then(data => console.log("Partie enregistrée :", data))
+            .catch(error => console.error("Erreur lors de la sauvegarde :", error));
     }
 });
