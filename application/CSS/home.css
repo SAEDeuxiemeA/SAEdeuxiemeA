@@ -106,6 +106,7 @@ main {
     border: 2px solid #818384;
     border-radius: 4px;
     background-color: #ffffff;
+    color: #000000;
     font-weight: bold;
     font-size: 1.4rem;
     display: flex;
