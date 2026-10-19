@@ -18,30 +18,26 @@ class ControllerHome extends Controller
      */
     public function index(): void
     {
-        $secretWord = 'TECHD';
+        $secretWord = 'LINUX';
         $wordId = 1;
-
         try {
+            //Connexion et récupération
             $wordDAO = new ModelWordDAO();
-            $wordObj = $wordDAO->getDailyWord();
-
+            $wordObj = $wordDAO->getDailyWord();  
+            //Tirage aléatoire si aucun mot n'est assigné à aujourd'hui
             if (!$wordObj) {
                 $wordObj = $wordDAO->getRandomWord();
             }
-
+            //Remplacement des valeurs de sécurité par les vraies données
             if ($wordObj) {
                 $secretWord = $wordObj->getWord();
                 $wordId = $wordObj->getId();
             }
-        } catch (\Exception $e) {
-        }
-
-        $data = [
+        } catch (\Throwable $e) {}
+        $this->render('ViewHome', [
             'secretWord' => $secretWord,
             'wordId'     => $wordId
-        ];
-
-        $this->render('ViewHome', $data);
+        ]);
     }
 
     public function saveGame(): void

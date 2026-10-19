@@ -60,13 +60,11 @@
         </div>
     </div>
 </main>
-
 <script>
-    const secretWord = "<?= $secretWord ?? 'TECHD' ?>";
-    const wordId = <?= $wordId ?? 1 ?>;
+    const secretWord = "<?= $secretWord ?>";
+    const wordId = <?= $wordId ?>;
 </script>
 <script src="application/javaScript/game.js"></script>
-
 <?php
     end_page();
 ?>

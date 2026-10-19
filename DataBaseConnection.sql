@@ -53,3 +53,15 @@ CREATE TABLE is_in (
     room_id INT NOT NULL REFERENCES rooms(id) ON DELETE CASCADE,
     PRIMARY KEY (username, room_id)
 );
+
+INSERT INTO words (word, length, category, daily_date) VALUES
+('LINUX', 5, 'Système', CURRENT_DATE),
+('PIXEL', 5, 'Graphisme', CURRENT_DATE + INTERVAL '1 day'),
+('CLOUD', 5, 'Réseau', CURRENT_DATE + INTERVAL '2 days'),
+('DEBUG', 5, 'Dév', CURRENT_DATE + INTERVAL '3 days'),
+('BYTES', 5, 'Mémoire', CURRENT_DATE + INTERVAL '4 days'),
+('MODEM', 5, 'Réseau', CURRENT_DATE + INTERVAL '5 days'),
+('STACK', 5, 'Dév', CURRENT_DATE + INTERVAL '6 days'),
+('QUERY', 5, 'Base de données', CURRENT_DATE + INTERVAL '7 days'),
+('PROXY', 5, 'Réseau', CURRENT_DATE + INTERVAL '8 days'),
+('LOGIC', 5, 'Dév', CURRENT_DATE + INTERVAL '9 days');
