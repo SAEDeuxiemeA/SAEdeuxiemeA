@@ -60,6 +60,13 @@
         </div>
     </div>
 </main>
+
+<script>
+    const secretWord = "<?= $secretWord ?? 'TECHD' ?>";
+    const wordId = <?= $wordId ?? 1 ?>;
+</script>
+<script src="public/js/script.js"></script>
+
 <?php
     end_page();
 ?>

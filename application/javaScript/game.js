@@ -3,8 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentCol = 0;
     const maxRows = 6;
     const maxCols = 5;
+    let gameOver = false;
+    const startTime = Date.now();
     
-    const secretWord = ""; //Mot à trouver, à voir avec Mélissa
+    // Note : secretWord et wordId sont directement récupérés depuis 
+    // les variables globales injectées par PHP dans ViewHome.php
 
     const keys = document.querySelectorAll(".key");
     keys.forEach(key => {
@@ -15,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (e) => {
+        if (gameOver) return;
+
         if (e.key === "Enter") {
             handleKeyPress("Enter");
         } else if (e.key === "Backspace") {
@@ -28,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function handleKeyPress(key) {
+        if (gameOver) return;
+
         if (key === "Enter") {
             submitRow();
         } else if (key === "Backspace") {
@@ -95,16 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
             updateKeyColor(letter, statuses[i]);
         });
 
-        if (guessWord === secretWord) {
-            setTimeout(() => alert("Bravo, tu as gagné !"), 200);
-            return;
-        }
-
+        const isWon = (guessWord === secretWord);
         currentRow++;
         currentCol = 0;
 
-        if (currentRow === maxRows) {
-            setTimeout(() => alert(`Partie terminée ! Le mot était : ${secretWord}`), 200);
+        if (isWon || currentRow === maxRows) {
+            gameOver = true;
+            const timeSeconds = Math.round((Date.now() - startTime) / 1000);
+            
+            saveGameResults(wordId, currentRow, timeSeconds, isWon);
+
+            if (isWon) {
+                setTimeout(() => alert("Bravo, tu as gagné ! 🎉"), 200);
+            } else {
+                setTimeout(() => alert(`Partie terminée ! Le mot était : ${secretWord}`), 200);
+            }
         }
     }
 
@@ -121,5 +133,20 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (status === "absent" && !key.classList.contains("present")) {
             key.classList.add("absent");
         }
+    }
+
+    function saveGameResults(wordId, attempts, timeSeconds, isWon) {
+        fetch("index.php?action=saveGame", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                word_id: wordId,
+                attempts: attempts,
+                time_seconds: timeSeconds,
+                is_won: isWon
+            })
+        }).catch(err => console.error("Erreur lors de la sauvegarde :", err));
     }
 });
