@@ -11,8 +11,6 @@ class ModelGame
     private ?int $timeSeconds;  //NULL tant que la partie n'est pas terminée
     private bool $isWon;
     private ?string $playedAt;
-    private array $guesses; //table guesses
-
     public function __construct(
         int $id,
         string $username,
@@ -22,7 +20,6 @@ class ModelGame
         ?int $timeSeconds,
         bool $isWon,
         ?string $playedAt = null,
-        array $guesses = []
     ) {
         $this->id = $id;
         $this->username = $username;
@@ -32,7 +29,6 @@ class ModelGame
         $this->timeSeconds = $timeSeconds;
         $this->isWon = $isWon;
         $this->playedAt = $playedAt;
-        $this->guesses = $guesses;
     }
 
     public function getId(): int
@@ -73,11 +69,6 @@ class ModelGame
     public function getPlayedAt(): ?string
     {
         return $this->playedAt;
-    }
-
-    public function getGuesses(): array
-    {
-        return $this->guesses;
     }
 }
 ?>
