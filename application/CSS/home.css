@@ -10,6 +10,57 @@ main {
     box-sizing: border-box;
 }
 
+.mode-indicator {
+    background-color: #d8d3d3;
+    padding: 6px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.mode-selector {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.btn-mode {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background-color: #d8d3d3;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-mode:hover {
+    background-color: #c5c0c0;
+}
+
+.btn-mode.active {
+    background-color: #b0aaaa;
+}
+
 .bloc-grille,
 .bloc-clavier {
     width: 100%;
@@ -59,6 +110,7 @@ main {
     font-size: 1.4rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     text-transform: uppercase;
 }
 
@@ -78,6 +130,11 @@ main {
     justify-content: center;
 }
 
+.key-wide {
+    max-width: 65px;
+    font-size: 0.75rem;
+}
+
 .key:hover {
     background-color: #e2e2e2;
 }
@@ -86,7 +143,38 @@ main {
     background-color: #bbb;
 }
 
+.tile.correct {
+    background-color: #6aaa64 !important;
+    color: #ffffff;
+    border-color: #6aaa64 !important;
+}
 
+.tile.present {
+    background-color: #c9b458 !important;
+    color: #ffffff;
+    border-color: #c9b458 !important;
+}
+
+.tile.absent {
+    background-color: #787c7e !important;
+    color: #ffffff;
+    border-color: #787c7e !important;
+}
+
+.key.correct {
+    background-color: #6aaa64 !important;
+    color: #ffffff;
+}
+
+.key.present {
+    background-color: #c9b458 !important;
+    color: #ffffff;
+}
+
+.key.absent {
+    background-color: #787c7e !important;
+    color: #ffffff;
+}
 
 @media screen and (min-width: 768px) {
     main {
@@ -115,16 +203,12 @@ main {
     }
 }
 
-
-
 @media screen and (min-width: 1024px) {
-    main {
+    .game-container {
         flex-direction: row;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         gap: 40px;
-        min-height: calc(100vh - 120px);
-        padding: 40px 20px;
     }
 
     .bloc-grille {
