@@ -65,7 +65,7 @@
     const secretWord = "<?= $secretWord ?? 'TECHD' ?>";
     const wordId = <?= $wordId ?? 1 ?>;
 </script>
-<script src="public/js/script.js"></script>
+<script src="application/javaScript/game.js"></script>
 
 <?php
     end_page();
