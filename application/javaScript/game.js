@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
             saveGameResults(wordId, currentRow, timeSeconds, isWon);
 
             if (isWon) {
-                setTimeout(() => alert("Bravo, tu as gagné ! 🎉"), 200);
+                setTimeout(() => alert("Bravo, tu as gagné !"), 200);
             } else {
                 setTimeout(() => alert(`Partie terminée ! Le mot était : ${secretWord}`), 200);
             }
