@@ -3,12 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentCol = 0;
     const maxRows = 6;
     const maxCols = 5;
-    let gameOver = false;
-    const startTime = Date.now();
     
-    // Note : secretWord et wordId sont directement récupérés depuis 
-    // les variables globales injectées par PHP dans ViewHome.php
-
+    const secretWord = ""; //Mot à trouver, à voir avec Mélissa
+    const startTime = Math.floor(Date.now() / 1000);
+    const wordId = 1;
     const keys = document.querySelectorAll(".key");
     keys.forEach(key => {
         key.addEventListener("click", () => {
@@ -18,8 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (e) => {
-        if (gameOver) return;
-
         if (e.key === "Enter") {
             handleKeyPress("Enter");
         } else if (e.key === "Backspace") {
@@ -33,8 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function handleKeyPress(key) {
-        if (gameOver) return;
-
         if (key === "Enter") {
             submitRow();
         } else if (key === "Backspace") {
@@ -102,21 +96,22 @@ document.addEventListener("DOMContentLoaded", () => {
             updateKeyColor(letter, statuses[i]);
         });
 
-        const isWon = (guessWord === secretWord);
+        if (guessWord === secretWord) {
+            setTimeout(() => alert("Bravo, tu as gagné !"), 200);
+            //On calcule le temps passé et on envoie la sauvegarde (isWon = true)
+            const timeSeconds = Math.floor(Date.now() / 1000) - startTime;
+            saveGameResult(wordId, currentRow + 1, timeSeconds, true);
+            return;
+        }
+
         currentRow++;
         currentCol = 0;
 
-        if (isWon || currentRow === maxRows) {
-            gameOver = true;
-            const timeSeconds = Math.round((Date.now() - startTime) / 1000);
-            
-            saveGameResults(wordId, currentRow, timeSeconds, isWon);
-
-            if (isWon) {
-                setTimeout(() => alert("Bravo, tu as gagné ! 🎉"), 200);
-            } else {
-                setTimeout(() => alert(`Partie terminée ! Le mot était : ${secretWord}`), 200);
-            }
+        if (currentRow === maxRows) {
+            setTimeout(() => alert(`Partie terminée ! Le mot était : ${secretWord}`), 200);
+            // On calcule le temps passé et on envoie la sauvegarde (isWon = false)
+            const timeSeconds = Math.floor(Date.now() / 1000) - startTime;
+            saveGameResult(wordId, maxRows, timeSeconds, false);
         }
     }
 
@@ -134,19 +129,23 @@ document.addEventListener("DOMContentLoaded", () => {
             key.classList.add("absent");
         }
     }
+    function saveGameResult(wordId, attempts, timeSeconds, isWon) {
+        const resultData = {
+            word_id: wordId,
+            attempts: attempts,
+            time_seconds: timeSeconds,
+            is_won: isWon
+        };
 
-    function saveGameResults(wordId, attempts, timeSeconds, isWon) {
-        fetch("index.php?action=saveGame", {
-            method: "POST",
+        fetch('index.php?action=saveGame', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                word_id: wordId,
-                attempts: attempts,
-                time_seconds: timeSeconds,
-                is_won: isWon
-            })
-        }).catch(err => console.error("Erreur lors de la sauvegarde :", err));
+            body: JSON.stringify(resultData)
+        })
+            .then(response => response.json())
+            .then(data => console.log("Partie enregistrée :", data))
+            .catch(error => console.error("Erreur lors de la sauvegarde :", error));
     }
 });
