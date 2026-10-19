@@ -12,34 +12,50 @@
     start_page('Accueil', 'home');
 ?>
 <main>
-    <div class="bloc-grille"> <!--création d'une grille pour le jeu, non fonctionnelle-->
-        <div class="grid">
-            <?php for ($row = 0; $row < 6; $row++): ?>
-                <div class="row">
-                    <?php for ($col = 0; $col < 5; $col++): ?>
-                        <div class="tile" data-row="<?= $row ?>" data-col="<?= $col ?>"></div>
-                    <?php endfor; ?>
-                </div>
-            <?php endfor; ?>
-        </div>
+    <div class="mode-indicator">
+            <span>Daily</span>
     </div>
 
-    <div class="bloc-clavier"> <!--création d'un clavier pour le jeu, non fonctionnel-->
-        <div class="keyboard">
-            <div class="keyboard-row">
-                <?php foreach (['A','Z','E','R','T','Y','U','I','O','P'] as $letter): ?>
-                    <button type="button" class="key" data-key="<?= $letter ?>"><?= $letter ?></button>
-                <?php endforeach; ?>
+    <div class="game-container">
+        <div class="bloc-grille"> <!--création d'une grille pour le jeu, non fonctionnelle-->
+            <div class="grid">
+                <?php for ($row = 0; $row < 6; $row++): ?>
+                    <div class="row">
+                        <?php for ($col = 0; $col < 5; $col++): ?>
+                            <div class="tile" data-row="<?= $row ?>" data-col="<?= $col ?>"></div>
+                        <?php endfor; ?>
+                    </div>
+                <?php endfor; ?>
             </div>
-            <div class="keyboard-row">
-                <?php foreach (['Q','S','D','F','G','H','J','K','L','M'] as $letter): ?>
-                    <button type="button" class="key" data-key="<?= $letter ?>"><?= $letter ?></button>
-                <?php endforeach; ?>
+        </div>
+
+        <div class="right-section">
+            <div class="mode-selector">
+                <button type="button" class="btn-mode active">Daily</button>
+                <button type="button" class="btn-mode">Training</button>
             </div>
-            <div class="keyboard-row">
-                <?php foreach (['W','X','C','V','B','N'] as $letter): ?>
-                    <button type="button" class="key" data-key="<?= $letter ?>"><?= $letter ?></button>
-                <?php endforeach; ?>
+
+            <div class="bloc-clavier"> <!--création d'un clavier pour le jeu, non fonctionnel-->
+                <div class="keyboard">
+                    <div class="keyboard-row">
+                        <?php foreach (['A','Z','E','R','T','Y','U','I','O','P'] as $letter): ?>
+                            <button type="button" class="key" data-key="<?= $letter ?>"><?= $letter ?></button>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="keyboard-row">
+                        <?php foreach (['Q','S','D','F','G','H','J','K','L','M'] as $letter): ?>
+                            <button type="button" class="key" data-key="<?= $letter ?>"><?= $letter ?></button>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="keyboard-row">
+                        <button type="button" class="key key-wide" data-key="Enter">ENTER</button>
+                        
+                        <?php foreach (['W','X','C','V','B','N'] as $letter): ?>
+                            <button type="button" class="key" data-key="<?= $letter ?>"><?= $letter ?></button>
+                        <?php endforeach; ?>
+                        <button type="button" class="key key-wide" data-key="Backspace">⌫</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
