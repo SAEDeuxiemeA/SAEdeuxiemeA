@@ -41,13 +41,6 @@ CREATE TABLE friends (
     CHECK (user_1 != user_2)
 );
 
-CREATE TABLE guesses (
-    id SERIAL PRIMARY KEY,
-    attempt_number INT NOT NULL,
-    guess_word VARCHAR(25) NOT NULL,
-    game_id INT NOT NULL REFERENCES games(id) ON DELETE CASCADE
-);
-
 CREATE TABLE rooms (
     id SERIAL PRIMARY KEY,
     code VARCHAR(255) UNIQUE NOT NULL,
@@ -57,6 +50,6 @@ CREATE TABLE rooms (
 
 CREATE TABLE is_in (
     username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE,
-    room_id INT NOT NULL REFERENCES room(id) ON DELETE CASCADE,
+    room_id INT NOT NULL REFERENCES rooms(id) ON DELETE CASCADE,
     PRIMARY KEY (username, room_id)
 );
