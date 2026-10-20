@@ -60,6 +60,13 @@
             <div id="game-message" class="game-message"></div>
         </div>
     </div>
+    <dialog id="game-over-modal" class="game-modal">
+        <div class="modal-content">
+            <h2 id="modal-title">Fin de partie</h2>
+            <p id="modal-message">Message</p>
+            <button id="modal-close-btn" class="modal-btn">Rejouer</button>
+        </div>
+    </dialog>
 </main>
 
 <script>

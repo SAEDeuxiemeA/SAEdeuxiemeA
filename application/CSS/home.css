@@ -186,6 +186,51 @@ main {
     min-height: 24px; 
 }
 
+.game-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    background-color: #ffffff;
+}
+
+.game-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    padding: 24px;
+    text-align: center;
+    font-family: inherit;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.modal-btn {
+    margin-top: 20px;
+    background-color: #9d60b6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modal-btn:hover {
+    background-color: #9d60b6;
+}
+
 @media screen and (min-width: 768px) {
     main {
         padding: 25px;
