@@ -13,6 +13,9 @@ class router
         'confidentiality' => 'ControllerConfidentiality',
         'reset' => 'ControllerReset',
         'profile' => 'ControllerProfile',
+        'settings' => 'ControllerSettings',
+        'leaderboard' => 'ControllerLeaderboard',
+        'social'=> 'ControllerSocial',
     ];
 
     //routes par défaut
