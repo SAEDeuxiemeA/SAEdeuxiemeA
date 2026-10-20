@@ -57,6 +57,7 @@
                     </div>
                 </div>
             </div>
+            <div id="game-message" class="game-message"></div>
         </div>
     </div>
 </main>
