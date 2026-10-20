@@ -32,8 +32,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    function clearMessage() {
+        const messageElement = document.getElementById("game-message");
+        if (messageElement) {
+            messageElement.textContent = "";
+        }
+    }
+
     function handleKeyPress(key) {
         if (gameOver) return;
+
+        clearMessage();
 
         if (key === "Enter") {
             submitRow();
@@ -60,9 +69,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function showMessage(text) {
+        const messageElement = document.getElementById("game-message");
+        if (!messageElement) return;
+        messageElement.textContent = text;
+    }
+
     function submitRow() {
         if (currentCol < maxCols) {
-            alert("Mot trop court !");
+            showMessage("Mot trop court !")
             return;
         }
 

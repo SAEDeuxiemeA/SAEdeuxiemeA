@@ -177,6 +177,15 @@ main {
     color: #ffffff;
 }
 
+.game-message {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #d9534f;
+    min-height: 24px; 
+}
+
 @media screen and (min-width: 768px) {
     main {
         padding: 25px;
