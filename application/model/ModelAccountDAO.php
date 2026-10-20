@@ -192,8 +192,9 @@ class ModelAccountDAO
 
         $token = bin2hex(random_bytes(32));
         $stmt = $db->prepare(
-            "INSERT INTO password_resets (token_hash, email, expires_at)
-            VALUES (:hash, :email, NOW() + INTERVAL '1 hour')"
+            "INSERT INTO password_resets (token_hash, email, expires_at, username)
+            VALUES (:hash, :email, NOW() + INTERVAL '1 hour',
+                (SELECT username FROM users WHERE email = :email))"
         );
         $stmt->execute([
             'hash'  => hash('sha256', $token),
