@@ -1,57 +1,65 @@
 <?php
+/**
+ * Vue du classement global (cumul des parties quotidiennes de chaque joueur).
+ *
+ * Variables fournies par le contrôleur :
+ *
+ * @var array[] $rows Lignes du classement global, déjà triées, de la forme
+ *                    `['rank' => int, 'username' => string, 'total_points' => int]`.
+ *
+ */
+
+
 require_once 'header.php';
-start_page('LeaderboardDaily', 'leaderboard');
+start_page('LeaderboardGlobal', 'leaderboard');
+
+$rows = $rows ?? [];
 ?>
 
 <main class="classement-container">
+
+    <?php /* COMPOSANT : onglets (aucune donnée, seulement deux liens ; l'onglet Global est actif) */ ?>
     <nav class="tabs-nav">
         <a href="index.php?page=classement&amp;filter=daily" class="tab-btn">Daily</a>
         <a href="index.php?page=classement&amp;filter=global" class="tab-btn active">Global</a>
     </nav>
 
+    <?php /* COMPOSANT : podium (données : les 3 premières lignes de $rows, ordre d'affichage 2, 1, 3) */ ?>
     <section class="podium-section">
         <div class="podium-step step-2">
             <span class="rank-number">2</span>
             <div>
-                <strong>Joueur 2</strong>
+                <strong><?= htmlspecialchars($rows[1]['username'] ?? '-') ?></strong>
             </div>
         </div>
 
         <div class="podium-step step-1">
             <span class="rank-number">1</span>
             <div>
-                <strong>Joueur 1</strong>
+                <strong><?= htmlspecialchars($rows[0]['username'] ?? '-') ?></strong>
             </div>
         </div>
 
         <div class="podium-step step-3">
             <span class="rank-number">3</span>
             <div>
-                <strong>Joueur 3</strong>
+                <strong><?= htmlspecialchars($rows[2]['username'] ?? '-') ?></strong>
             </div>
         </div>
     </section>
 
+    <?php /* COMPOSANT : liste du classement (données : les lignes de $rows à partir de la 4e) */ ?>
     <section class="ranking-list-section">
         <p class="ranking-title">Suite du classement avec l'accumulation des daily de chaque personne</p>
 
         <ul class="ranking-list">
+            <?php foreach (array_slice($rows, 3) as $row): ?>
+                <?php /* COMPOSANT : une ligne de la liste */ ?>
                 <li class="ranking-item">
-                <span class="rank-index">#4</span>
-                <span class="username">Joueur 4</span>
-            </li>
-            <li class="ranking-item">
-                <span class="rank-index">#5</span>
-                <span class="username">Joueur 5</span>
-            </li>
-            <li class="ranking-item">
-                <span class="rank-index">#6</span>
-                <span class="username">Joueur 6</span>
-            </li>
-            <li class="ranking-item">
-                <span class="rank-index">#7</span>
-                <span class="username">Joueur 7</span>
-            </li>
+                    <span class="rank-index">#<?= (int) $row['rank'] ?></span>
+                    <span class="username"><?= htmlspecialchars($row['username']) ?></span>
+                </li>
+            <?php endforeach; ?>
         </ul>
     </section>
 </main>
