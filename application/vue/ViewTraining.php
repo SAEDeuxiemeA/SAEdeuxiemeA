@@ -31,8 +31,8 @@
 
         <div class="right-section">
             <div class="mode-selector">
-                <button type="button" class="btn-mode">Daily</button>
-                <button type="button" class="btn-mode active">Training</button>
+                <a href="index.php?page=home" class="btn-mode <?= ($_GET['page'] ?? '') === 'home' ? 'active' : '' ?>">Daily</a>
+                <a href="index.php?page=training" class="btn-mode <?= ($_GET['page'] ?? 'training') === 'training' ? 'active' : '' ?>">Training</a>
             </div>
 
             <div class="bloc-clavier"> <!--création d'un clavier pour le jeu, non fonctionnel-->
@@ -63,8 +63,8 @@
     <dialog id="game-over-modal" class="game-modal">
         <div class="modal-content">
             <h2 id="modal-title">Fin de partie</h2>
-            <p id="modal-message">Le message apparaîtra ici...</p>
-            <button id="modal-close-btn" class="modal-btn">Rejouer / Fermer</button>
+            <p id="modal-message">Message</p>
+            <button id="modal-close-btn" class="modal-btn">Rejouer</button>
         </div>
     </dialog>
 </main>

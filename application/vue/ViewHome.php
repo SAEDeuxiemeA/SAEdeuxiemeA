@@ -31,8 +31,8 @@
 
         <div class="right-section">
             <div class="mode-selector">
-                <button type="button" class="btn-mode active">Daily</button>
-                <button type="button" class="btn-mode">Training</button>
+                <a href="index.php?page=home" class="btn-mode <?= ($_GET['page'] ?? 'home') === 'home' ? 'active' : '' ?>">Daily</a>
+                <a href="index.php?page=training" class="btn-mode <?= ($_GET['page'] ?? '') === 'training' ? 'active' : '' ?>">Training</a>
             </div>
 
             <div class="bloc-clavier"> <!--création d'un clavier pour le jeu, non fonctionnel-->

@@ -42,6 +42,11 @@ main {
 }
 
 .btn-mode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000000;
     flex: 1;
     padding: 12px;
     border: none;
@@ -51,6 +56,7 @@ main {
     font-size: 1rem;
     cursor: pointer;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .btn-mode:hover {
