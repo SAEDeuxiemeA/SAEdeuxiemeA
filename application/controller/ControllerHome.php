@@ -21,8 +21,9 @@ class ControllerHome extends Controller
         try {
             //Connexion et récupération
             $wordDAO = new ModelWordDAO();
-            $wordObj = $wordDAO->getDailyWord();  
-            //Tirage aléatoire si aucun mot n'est assigné à aujourd'hui
+            //mode Daily
+            $wordObj = $wordDAO->getDailyWord();
+            //Tirage aléatoire si aucun mot n'est assigné au Daily
             if (!$wordObj) {
                 $wordObj = $wordDAO->getRandomWord();
             }
