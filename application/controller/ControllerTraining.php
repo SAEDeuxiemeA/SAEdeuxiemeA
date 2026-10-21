@@ -18,22 +18,17 @@ class ControllerTraining extends Controller
      */
     public function index(): void
     {
-        $secretWord = 'TECHD';
+        $secretWord = 'LINUX';
         $wordId = 1;
-
         try {
             $wordDAO = new ModelWordDAO();
-            $wordObj = $wordDAO->getDailyWord();
-
-            if (!$wordObj) {
-                $wordObj = $wordDAO->getRandomWord();
-            }
+            $wordObj = $wordDAO->getRandomWord();
 
             if ($wordObj) {
                 $secretWord = $wordObj->getWord();
                 $wordId = $wordObj->getId();
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
         }
 
         $data = [
@@ -56,16 +51,19 @@ class ControllerTraining extends Controller
         $attempts = (int) ($data['attempts'] ?? 0);
         $time     = (int) ($data['time_seconds'] ?? 0);
         $isWon    = (bool) ($data['is_won'] ?? false);
+        $guesses  = (array) ($data['guesses'] ?? []);
 
         try {
             if ($username && $wordId > 0) {
                 $gameDAO = new ModelGameDAO();
                 $gameId = $gameDAO->createGame($username, $wordId);
                 if ($gameId) {
+                    foreach ($guesses as $index => $word) {
+                    }
                     $gameDAO->finishGame($gameId, $attempts, $time, $isWon);
                 }
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
         }
 
         echo json_encode(['status' => 'success']);
