@@ -21,6 +21,13 @@ CREATE TABLE words (
     daily_date DATE UNIQUE
 );
 
+CREATE TABLE rooms (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(255) UNIQUE NOT NULL,
+    username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE, /*créateur de la room*/
+    word_id INT NOT NULL REFERENCES words(id) ON DELETE CASCADE
+);
+
 CREATE TABLE games (
     id SERIAL PRIMARY KEY,
     username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE, /*Si le joueur supprime son compte son historique s'efface*/
@@ -28,7 +35,7 @@ CREATE TABLE games (
     room_id INT REFERENCES rooms(id) ON DELETE CASCADE, /*NULL si partie Daily solo, ou numéro du salon si multijoueur*/
     attempts INT NOT NULL,
     time_seconds INT,
-    is_won BOOLEAN NOT NULL, 
+    is_won BOOLEAN NOT NULL,
     played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -42,17 +49,10 @@ CREATE TABLE friends (
 );
 
 CREATE TABLE guesses (
-                         id SERIAL PRIMARY KEY,
-                         attempt_number INT NOT NULL,
-                         guess_word VARCHAR(25) NOT NULL,
-                         game_id INT NOT NULL REFERENCES games(id) ON DELETE CASCADE
-);
-
-CREATE TABLE rooms (
     id SERIAL PRIMARY KEY,
-    code VARCHAR(255) UNIQUE NOT NULL,
-    username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE, /*créateur de la room*/
-    word_id INT NOT NULL REFERENCES words(id) ON DELETE CASCADE
+    attempt_number INT NOT NULL,
+    guess_word VARCHAR(25) NOT NULL,
+    game_id INT NOT NULL REFERENCES games(id) ON DELETE CASCADE
 );
 
 CREATE TABLE is_in (
