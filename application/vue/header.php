@@ -41,10 +41,10 @@
                 <strong>TECHDLE</strong> <!--titre de notre jeu-->
             </li>
             <li class="header-right">
-                <button>Parametre</button>
-                <button>Classement</button>
-                <button>Social</button>
-                <button>Profil</button>
+                <a href="index.php?page=settings&amp;action=index">Settings</a>
+                <a href="index.php?page=leaderboard&amp;action=index">Leaderboard</a>
+                <a href="index.php?page=social&amp;action=index">Social</a>
+                <a href="index.php?page=profile&amp;action=index">Profile</a>
             </li>
         </ul>
         <nav class="header-nav"> <!--permet la navigation sur le site et l'accés aux pages-->
