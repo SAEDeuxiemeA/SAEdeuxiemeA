@@ -4,11 +4,9 @@
  *
  * Variables fournies par le contrôleur :
  *
- * @var array[] $rows Lignes du classement global, déjà triées, de la forme
- *                    `['rank' => int, 'username' => string, 'total_points' => int]`.
+ * @var model\ModelLeaderboard[] $rows Lignes du classement global déjà triées.
  *
  */
-
 
 require_once 'header.php';
 start_page('LeaderboardGlobal', 'leaderboard');
@@ -29,21 +27,21 @@ $rows = $rows ?? [];
         <div class="podium-step step-2">
             <span class="rank-number">2</span>
             <div>
-                <strong><?= htmlspecialchars($rows[1]['username'] ?? '-') ?></strong>
+                <strong><?= htmlspecialchars($rows[1]->getUsername() ?? '-') ?></strong>
             </div>
         </div>
 
         <div class="podium-step step-1">
             <span class="rank-number">1</span>
             <div>
-                <strong><?= htmlspecialchars($rows[0]['username'] ?? '-') ?></strong>
+                <strong><?= htmlspecialchars($rows[0]->getUsername() ?? '-') ?></strong>
             </div>
         </div>
 
         <div class="podium-step step-3">
             <span class="rank-number">3</span>
             <div>
-                <strong><?= htmlspecialchars($rows[2]['username'] ?? '-') ?></strong>
+                <strong><?= htmlspecialchars($rows[2]->getUsername() ?? '-') ?></strong>
             </div>
         </div>
     </section>
@@ -56,8 +54,8 @@ $rows = $rows ?? [];
             <?php foreach (array_slice($rows, 3) as $row): ?>
                 <?php /* COMPOSANT : une ligne de la liste */ ?>
                 <li class="ranking-item">
-                    <span class="rank-index">#<?= (int) $row['rank'] ?></span>
-                    <span class="username"><?= htmlspecialchars($row['username']) ?></span>
+                    <span class="rank-index">#<?= (int) $row->getRank() ?></span>
+                    <span class="username"><?= htmlspecialchars($row->getUsername()) ?></span>
                 </li>
             <?php endforeach; ?>
         </ul>
