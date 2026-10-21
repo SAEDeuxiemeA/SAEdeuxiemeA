@@ -15,15 +15,14 @@ class ControllerLeaderboard extends Controller
 {
     public function index(): void
     {
-            $filter = $_GET['filter'] ?? 'daily';
-            $dao = new ModelGameDAO();
+        $filter = $_GET['filter'] ?? 'daily';
+        $dao = new ModelGameDAO();
 
-        if ($filter == 'global')
-        {
+        if ($filter === 'global') {
             $this->render('ViewLeaderboardGlobal', ['rows' => $dao->getGlobalLeaderboard()]);
             return;
         }
 
-        this->render('ViewLeaderboardGlobal', ['rows' => $dao->getDailyLeaderboard()]);
+        $this->render('ViewLeaderboardDaily', ['rows' => $dao->getDailyLeaderboard()]);
     }
 }
