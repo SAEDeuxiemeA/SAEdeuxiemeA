@@ -6,9 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let gameOver = false;
     const startTime = Date.now();
     
-    // Note : secretWord et wordId sont directement récupérés depuis 
-    // les variables globales injectées par PHP dans ViewHome.php
-
     const keys = document.querySelectorAll(".key");
     keys.forEach(key => {
         key.addEventListener("click", () => {
@@ -127,12 +124,36 @@ document.addEventListener("DOMContentLoaded", () => {
             
             saveGameResults(wordId, currentRow, timeSeconds, isWon);
 
-            if (isWon) {
-                setTimeout(() => alert("Bravo, tu as gagné !"), 200);
-            } else {
-                setTimeout(() => alert(`Partie terminée ! Le mot était : ${secretWord}`), 200);
-            }
+            setTimeout(() => {
+                if (isWon) {
+                    showModal("Victoire !", "Bravo, tu as gagné !");
+                } else {
+                    showModal("Défaite", `Partie terminée ! Le mot était : ${secretWord}`);
+                }
+            }, 250);
         }
+    }
+
+    function showModal(title, message) {
+        const modal = document.getElementById("game-over-modal");
+        const titleEl = document.getElementById("modal-title");
+        const messageEl = document.getElementById("modal-message");
+
+        if (!modal) return;
+
+        titleEl.textContent = title;
+        messageEl.textContent = message;
+
+        modal.showModal();
+    }
+
+    const closeBtn = document.getElementById("modal-close-btn");
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            const modal = document.getElementById("game-over-modal");
+            modal.close();
+            location.reload();
+        });
     }
 
     function updateKeyColor(letter, status) {
