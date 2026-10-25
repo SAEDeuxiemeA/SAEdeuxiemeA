@@ -1,7 +1,28 @@
-# SAEdeuxiemeA
-Voici le github de notre SAE pour l'année de BUT 2.
+## 🔡 Techdle (SAEdeuxiemeA)
 
-## Utilisation de l'intelligence artificielle
+Ce projet est une application web multijoueur inspirée du jeu **Wordle**, développée dans le cadre de notre SAE de 2ème année de BUT Informatique.
+
+Le but du jeu est de deviner un mot caché (basé sur un dictionnaire de termes informatiques) avec un nombre d'essais limité.
+
+**Fonctionnalités :**
+* **Modes de jeu :** Mode "Daily" (mot du jour unique) et Mode "Training" (tirage aléatoire infini).
+* **Architecture :** Construit en **PHP** et suit un modèle **MVC**.
+* **Base de données :** Données gérée sous **PostgreSQL**.
+* **Front-end :** Logique de jeu en temps réel gérée en **JavaScript** avec une interface en **CSS**.
+* **Déploiement :** Base de données et application hébergées sur **Alwaysdata**.
+
+## 👥 L'équipe et les rôles (Méthodologie Scrum)
+
+Le projet a été développé de manière Agile, avec des Sprints, un Product Backlog et une décomposition en Issues sur GitHub.
+
+| Membre | Rôle |
+| :--- | :--- |
+| **Anna** | **Scrum Master & Développeuse** |
+| **Mélissa** | **Product Owner & Développeuse** |
+| **Tommy** | **Développeur** |
+| **Kalvin** | **Développeur** |
+
+## 🤖 Utilisation de l'intelligence artificielle
 
 | Nom de l'IA utilisée | Pourquoi l'avoir utilisée | Qui l'a utilisée |
 | :--- | :--- | :--- |
@@ -14,7 +35,7 @@ Voici le github de notre SAE pour l'année de BUT 2.
 | Gemini | Validation W3C | Anna |
 | Gemini | Aide à la syntaxe PlantUML | Mélissa |
 
-## Utilisation d'autres sources hors IA
+## ℹ️ Utilisation d'autres sources hors IA
 
 | Nom d'autre source | Pourquoi l'avoir utilisée | Qui l'a utilisée |
 | :--- | :--- | :--- |
@@ -35,7 +56,7 @@ Voici le github de notre SAE pour l'année de BUT 2.
 | [Refactoring.guru – Singleton](https://refactoring.guru/fr/design-patterns/singleton) | Modélisation et implémentation du pattern Singleton | Mélissa |
 
 
-## Architecture logicielle (UML)
+## 📊 Architecture logicielle (UML)
 
 ### Diagramme de classes
 ![Diagramme de classes](UML.png)
