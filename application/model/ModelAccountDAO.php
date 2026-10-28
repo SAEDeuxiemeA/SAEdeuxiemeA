@@ -160,6 +160,19 @@ class ModelAccountDAO
         return $stmt->fetch() !== false;
     }
 
+    public function getAccountByUsername(string $login): ?ModelAccount
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare('SELECT username, userpassword, email, picture FROM users WHERE username = :login');
+        $stmt->execute(['login' => $login]);
+        $row = $stmt->fetch();
+
+        if ($row) {
+            return new ModelAccount($row['username'], $row['userpassword'], $row['email'], $row['picture']);
+        }
+        return null;
+    }
+
     /**
      * Crée un jeton de réinitialisation de mot de passe valable 1 heure.
      *
@@ -179,8 +192,9 @@ class ModelAccountDAO
 
         $token = bin2hex(random_bytes(32));
         $stmt = $db->prepare(
-            "INSERT INTO password_resets (token_hash, email, expires_at)
-            VALUES (:hash, :email, NOW() + INTERVAL '1 hour')"
+            "INSERT INTO password_resets (token_hash, email, expires_at, username)
+            VALUES (:hash, :email, NOW() + INTERVAL '1 hour',
+                (SELECT username FROM users WHERE email = :email))"
         );
         $stmt->execute([
             'hash'  => hash('sha256', $token),

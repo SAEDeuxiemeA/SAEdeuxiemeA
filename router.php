@@ -5,12 +5,14 @@ class router
     //tout les routes possible qui peut être acceder par l'utilisateur
     const ROUTES_AVAIL = [
         'home' => 'ControllerHome',
+        'training' => 'ControllerTraining',
         'createacc' => 'ControllerCreateAcc',
         'legal' => 'ControllerLegal',
         'login' => 'ControllerLogin',
         'password' => 'ControllerPassword',
         'confidentiality' => 'ControllerConfidentiality',
         'reset' => 'ControllerReset',
+        'profile' => 'ControllerProfile',
     ];
 
     //routes par défaut
