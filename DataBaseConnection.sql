@@ -26,6 +26,8 @@ CREATE TABLE rooms (
     code VARCHAR(255) UNIQUE NOT NULL,
     username VARCHAR(25) NOT NULL REFERENCES users(username) ON DELETE CASCADE, /*créateur de la room*/
     word_id INT NOT NULL REFERENCES words(id) ON DELETE CASCADE
+    status VARCHAR(20) DEFAULT 'waiting' NOT NULL
+
 );
 
 CREATE TABLE games (
