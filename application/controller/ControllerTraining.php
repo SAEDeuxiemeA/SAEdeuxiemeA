@@ -45,9 +45,7 @@ class ControllerTraining extends Controller
             session_start();
         }
 
-        $data = json_decode(file_get_contents('php://input'), true);
-        $username = $_SESSION['user']['username'] ?? null;
-        $wordId   = (int) ($data['word_id'] ?? 0);
+        $username = $_SESSION['user']['username'] ?? $_SESSION['username'] ?? null;        $wordId   = (int) ($data['word_id'] ?? 0);
         $attempts = (int) ($data['attempts'] ?? 0);
         $time     = (int) ($data['time_seconds'] ?? 0);
         $isWon    = (bool) ($data['is_won'] ?? false);
@@ -59,6 +57,7 @@ class ControllerTraining extends Controller
                 $gameId = $gameDAO->createGame($username, $wordId);
                 if ($gameId) {
                     foreach ($guesses as $index => $word) {
+                        $gameDAO->addGuess($gameId, $index + 1, $word); //pour sauvegarder chaque mot
                     }
                     $gameDAO->finishGame($gameId, $attempts, $time, $isWon);
                 }
@@ -66,7 +65,6 @@ class ControllerTraining extends Controller
         } catch (\Throwable $e) {
         }
 
-        echo json_encode(['status' => 'success']);
-        exit;
+        $this->render('ViewTraining'); //vue t
     }
 }
