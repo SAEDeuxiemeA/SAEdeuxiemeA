@@ -1,7 +1,7 @@
 <?php
 
     /**
-     * Vue de la page d'accueil / page de jeu.
+     * Vue de la page de jeu.
      *
      * Affiche la grille de jeu (6 lignes de 5 cases) et le clavier AZERTY.
      * Les boucles ne servent qu'à répéter du HTML. Aucune variable n'est
