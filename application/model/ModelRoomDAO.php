@@ -1,9 +1,6 @@
 <?php
 namespace model;
 
-require_once __DIR__ . '/Database.php';
-require_once __DIR__ . '/ModelRoom.php';
-
 class ModelRoomDAO
 {
     public function createRoom(string $code, string $username, int $wordId): ?int

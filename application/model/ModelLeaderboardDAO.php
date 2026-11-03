@@ -3,10 +3,6 @@ namespace model;
 
 use PDO;
 
-require_once __DIR__ . '/Database.php';
-require_once __DIR__ . '/ModelLeaderboard.php';
-require_once __DIR__ . '/ModelGameDAO.php';
-
 class ModelLeaderboardDAO
 {
     private PDO $db;

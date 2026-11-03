@@ -1,9 +1,5 @@
 <?php
 namespace model;
-
-require_once __DIR__ . '/Database.php';
-require_once __DIR__ . '/ModelWord.php';
-
 class ModelWordDAO
 {
     public function getDailyWord(): ?ModelWord
