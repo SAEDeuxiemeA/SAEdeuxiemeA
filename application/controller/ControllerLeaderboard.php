@@ -1,11 +1,7 @@
 <?php
 
 namespace controller;
-
 use model\ModelGameDAO;
-
-require_once __DIR__ . '/Controller.php';
-require_once __DIR__ . '/../model/ModelGameDAO.php';
 
 /**
  * Contrôler des leaderboards (route 'index.php?page=leaderboard).

@@ -1,9 +1,6 @@
 <?php
 namespace model;
 
-require_once __DIR__ . '/Database.php';
-require_once __DIR__ . '/ModelAccount.php';
-
 /**
  * DAO (Data Access Object) des comptes utilisateurs.
  *
