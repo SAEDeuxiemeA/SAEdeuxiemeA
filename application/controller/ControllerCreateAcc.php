@@ -3,8 +3,6 @@
 namespace controller;
 use model\ModelAccountDAO;
 
-require_once __DIR__ . "/Controller.php";
-require_once __DIR__ . "/../model/ModelAccountDAO.php";
 
 /**
  * Contrôleur de la création de compte.

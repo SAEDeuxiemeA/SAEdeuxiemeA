@@ -1,9 +1,6 @@
 <?php
 
 namespace controller;
-require_once __DIR__ . "/Controller.php";
-require_once __DIR__ . '/../model/ModelGameDAO.php';
-require_once __DIR__ . '/../model/ModelWordDAO.php';
 
 use model\ModelGameDAO;
 use model\ModelWordDAO;

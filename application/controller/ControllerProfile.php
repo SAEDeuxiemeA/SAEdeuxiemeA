@@ -3,8 +3,6 @@
 namespace controller;
 use model\ModelAccountDAO;
 
-require_once __DIR__ . "/Controller.php";
-require_once __DIR__ . "/../model/ModelAccountDAO.php";
 class ControllerProfile extends Controller
 {
     public function index(): void{
