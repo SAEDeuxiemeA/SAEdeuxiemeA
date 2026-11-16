@@ -1,131 +1,188 @@
+/*
+ * leaderboard.css : page de classement (Daily et Global).
+ * Mise en page d'après la maquette Figma : onglets, podium 2-1-3, liste.
+ * Les couleurs reprennent celles de global.css (thème sombre).
+ * L'en-tête (logo, titre, boutons) est géré par global.css.
+ */
+
 .classement-container {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 0 20px;
-    font-family: Arial, sans-serif;
+    --lb-surface: #1f1f23;     /* fond des blocs (comme l'en-tête) */
+    --lb-surface-alt: #3a3a3c; /* onglet actif, survol */
+    --lb-border: #3a3a3c;      /* bordure des blocs */
+    --lb-separator: #2a2a2d;   /* traits entre les lignes */
+    --lb-text: #ffffff;
+    --lb-muted: #b0b0b0;
+    --lb-radius: 0;            /* mettre 8px pour arrondir les blocs */
+
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem 1rem 2rem;
+    color: var(--lb-text);
+    font-style: italic;        /* retirer cette ligne pour un texte droit */
+    font-weight: 300;
 }
 
-.tabs-nav {
+/* ---------- Onglets Daily / Global ---------- */
+
+.classement-container .tabs-nav {
     display: flex;
-    gap: 8px;
-    margin-bottom: 30px;
+    align-items: flex-start;   /* les onglets pendent depuis le haut */
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.tab-btn {
-    background-color: #d8d0d0;
-    color: #555;
+.classement-container .tab-btn {
+    min-width: 95px;
+    padding: 0.35rem 1.5rem;
+    background: var(--lb-surface);
+    border: 1px solid var(--lb-border);
+    color: var(--lb-muted);
+    font-size: 0.8rem;
+    text-align: center;
     text-decoration: none;
-    padding: 8px 24px;
-    font-style: italic;
-    font-size: 0.95rem;
-    border-radius: 2px;
-    transition: background-color 0.2s ease;
+    border-radius: 0 0 var(--lb-radius) var(--lb-radius);
 }
 
-.tab-btn.active {
-    background-color: #c4bcbc;
-    color: #222;
-    font-weight: bold;
+/* L'onglet actif est plus haut et plus clair que l'autre */
+.classement-container .tab-btn.active {
+    padding-bottom: 1.4rem;
+    background: var(--lb-surface-alt);
+    color: var(--lb-text);
 }
 
-.tab-btn:hover {
-    background-color: #c4bcbc;
+.classement-container .tab-btn:hover,
+.classement-container .tab-btn:focus-visible {
+    color: var(--lb-text);
 }
 
-.podium-section {
+/* ---------- Podium (ordre dans le HTML : 2, 1, 3) ---------- */
+
+.classement-container .podium-section {
     display: flex;
+    align-items: flex-end;     /* les marches reposent sur la même ligne */
     justify-content: center;
-    align-items: flex-end;
-    gap: 25px;
-    margin-bottom: 40px;
+    gap: 1.5rem;
+    margin: 0 0 2.5rem;
 }
 
-.podium-step {
-    background-color: #d8d0d0;
-    border-radius: 3px;
+.classement-container .podium-step {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 10px;
+    justify-content: center;
+    gap: 0.25rem;
+    width: 132px;
+    padding: 0.5rem;
+    background: var(--lb-surface);
+    border: 1px solid var(--lb-border);
+    border-radius: var(--lb-radius);
     text-align: center;
+    overflow: hidden;
 }
 
-.rank-number {
-    font-size: 2.8rem;
-    font-style: italic;
-    font-weight: 300;
-    color: #555;
+.classement-container .step-1 { height: 136px; }
+.classement-container .step-2 { height: 86px; }
+.classement-container .step-3 { height: 58px; }
+
+.classement-container .rank-number {
+    font-size: 1.6rem;
     line-height: 1;
 }
 
-.podium-step strong {
-    font-size: 1rem;
-    color: #333;
-    font-weight: 600;
+.classement-container .podium-step strong {
+    display: block;
+    max-width: 100%;
+    font-weight: 400;
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;   /* pseudo trop long : coupé avec « … » */
+    white-space: nowrap;
 }
 
-.step-1 {
-    width: 180px;
-    height: 200px;
+/* ---------- Suite du classement ---------- */
+
+.classement-container .ranking-list-section {
+    min-height: 240px;
+    padding: 1.5rem 2rem;
+    background: var(--lb-surface);
+    border: 1px solid var(--lb-border);
+    border-radius: var(--lb-radius);
 }
 
-.step-2 {
-    width: 180px;
-    height: 145px;
-}
-
-.step-3 {
-    width: 180px;
-    height: 115px;
-}
-
-.ranking-list-section {
-    background-color: #d8d0d0;
-    border-radius: 3px;
-    padding: 35px 25px;
+.classement-container .ranking-title {
+    margin: 0 0 1.25rem;
+    color: var(--lb-muted);
+    font-size: 1.1rem;
     text-align: center;
-    min-height: 280px;
 }
 
-.ranking-title {
-    font-size: 1.4rem;
-    font-style: italic;
-    color: #555;
-    margin-bottom: 25px;
-}
-
-.ranking-list {
-    list-style: none;
-    padding: 0;
+.classement-container .ranking-list {
     margin: 0 auto;
-    max-width: 700px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    padding: 0;
+    max-width: 600px;
+    list-style: none;
 }
 
-.ranking-item {
-    background-color: #ffffff;
-    padding: 12px 20px;
-    border-radius: 4px;
+.classement-container .ranking-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    font-size: 1rem;
-    color: #333;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    gap: 1rem;
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid var(--lb-separator);
 }
 
-.rank-index {
-    font-weight: bold;
-    color: #777;
-    width: 40px;
-    text-align: left;
+.classement-container .ranking-item:last-child {
+    border-bottom: none;
 }
 
-.username {
-    flex-grow: 1;
-    text-align: left;
-    font-weight: 500;
+.classement-container .ranking-item:hover {
+    background: var(--lb-separator);
+}
+
+.classement-container .rank-index {
+    flex: 0 0 3rem;
+    color: var(--lb-muted);
+    font-size: 0.95rem;
+}
+
+.classement-container .username {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Facultatif : points ou résultat affichés à droite d'une ligne ou d'une marche */
+.classement-container .score {
+    color: var(--lb-muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* ---------- Petits écrans ---------- */
+
+@media (max-width: 600px) {
+    .classement-container .podium-section {
+        gap: 0.5rem;
+    }
+
+    .classement-container .podium-step {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+        padding: 0.4rem 0.25rem;
+    }
+
+    .classement-container .step-1 { height: 110px; }
+    .classement-container .step-2 { height: 74px; }
+    .classement-container .step-3 { height: 52px; }
+
+    .classement-container .ranking-list-section {
+        padding: 1rem;
+    }
+
+    .classement-container .ranking-title {
+        font-size: 1rem;
+    }
 }
