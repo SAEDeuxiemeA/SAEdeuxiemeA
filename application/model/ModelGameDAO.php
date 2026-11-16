@@ -1,9 +1,5 @@
 <?php
 namespace model;
-
-require_once __DIR__ . '/Database.php';
-require_once __DIR__ . '/ModelGame.php';
-
 class ModelGameDAO
 {
     public function createGame(string $username, int $wordId, ?int $roomId = null): ?int

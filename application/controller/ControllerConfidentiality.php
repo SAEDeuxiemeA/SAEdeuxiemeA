@@ -1,7 +1,6 @@
 <?php
 
 namespace controller;
-require_once __DIR__ . "/Controller.php";
 
 /**
 * Contrôleur de la page de politique de confidentialité (contenu statique).
